@@ -1,5 +1,5 @@
 // SparePart: Represents the spare part name and availability in stock
-public class SparePart extends CarService {
+public class SparePart {
     private String sparePartName;
     private boolean isInStock;
 

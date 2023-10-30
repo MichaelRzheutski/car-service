@@ -2,7 +2,7 @@ import java.util.Formatter;
 import java.util.Locale;
 
 // SparePartsShop: Represents the name and cost of the spare part which on sale
-public class SparePartsShop extends CarService {
+public class SparePartsShop {
     private SparePart sparePartName;
     private double sparePartCost;
 

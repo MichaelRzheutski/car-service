@@ -1,5 +1,5 @@
 // Invoice: Represents an invoice for a customer with total cost and payment status
-public class Invoice extends CarService {
+public class Invoice {
     private double totalCost;
     private String paymentStatus;
 

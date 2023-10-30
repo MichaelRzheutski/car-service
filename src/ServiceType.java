@@ -1,5 +1,5 @@
 // ServiceType: Represents service type and makes of parts it using in process.
-public class ServiceType extends CarService {
+public class ServiceType {
     private String serviceType;
     private String makeOfOil;
     private String makeOfTires;
