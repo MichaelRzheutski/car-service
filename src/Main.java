@@ -1,7 +1,7 @@
 // Main: Runner class
 public class Main {
     public static void main(String[] args) {
-        // Create Car Service
+        // Create car service
         CarService carService = new CarService("Добро пожаловать в Автосервис '4 колеса!'");
 
         // Create cars
@@ -14,7 +14,7 @@ public class Main {
         ServiceType tireRotation = new ServiceType("Замена шин");
         ServiceType brakeInspection = new ServiceType("Диагностика тормозов");
 
-        // Create serviceRecords for customers
+        // Create service records for customers
         ServiceRecord alexeyPrivolnovService = new ServiceRecord(
                 oilChange, "5 Сентября 2023", 50.00
         );
