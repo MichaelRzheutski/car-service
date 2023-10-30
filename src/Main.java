@@ -9,12 +9,12 @@ public class Main {
         Car toyotaLandCruiser = new Car("Toyota", "Land Cruiser", "2023", 500);
         Car mercedesBenz = new Car("Mercedes", "Benz", "2023", 300);
 
-        // Create list of services for cars
+        // Create services for cars
         ServiceType oilChange = new ServiceType("Замена моторного масла");
         ServiceType tireRotation = new ServiceType("Замена шин");
         ServiceType brakeInspection = new ServiceType("Диагностика тормозов");
 
-        // Create list of serviceRecords for customers
+        // Create serviceRecords for customers
         ServiceRecord alexeyPrivolnovService = new ServiceRecord(
                 oilChange, "5 Сентября 2023", 50.00
         );
@@ -25,7 +25,7 @@ public class Main {
                 brakeInspection, "5 Октября 2023", 25.00
         );
 
-        // Create list of mechanics
+        // Create mechanics
         Mechanic vladlenPoddubitsky = new Mechanic(
                 "Владлен", "Поддубицкий", "высшая", "Доступен"
         );

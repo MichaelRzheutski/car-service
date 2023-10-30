@@ -11,6 +11,7 @@ public class SparePartsShop extends CarService {
         this.sparePartCost = sparePartCost;
     }
 
+    // Method shows available and sold out spare parts in the service shop
     public static void showSparePartsInStore(SparePartsShop[] sparePartsInShop) {
         for (SparePartsShop spares : sparePartsInShop) {
             if (spares.getSparePartName().isInStock()) {

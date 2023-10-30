@@ -26,6 +26,7 @@ public class Customer extends Person {
         this.invoice = invoice;
     }
 
+    // Method shows whole info about customers
     public static void showCustomers(CarService carService, Customer[] customers) {
         System.out.println(carService.getCarServiceName() + "\n");
 
