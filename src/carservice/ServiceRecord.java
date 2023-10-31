@@ -1,3 +1,5 @@
+package carservice;
+
 // ServiceRecord: Represents provided service, date and cost
 public class ServiceRecord {
     private ServiceType serviceProvided;

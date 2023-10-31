@@ -1,3 +1,5 @@
+package carservice;
+
 // ServiceType: Represents service type and makes of parts it using in process.
 public class ServiceType {
     private String serviceType;

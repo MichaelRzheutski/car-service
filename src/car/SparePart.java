@@ -1,3 +1,5 @@
+package car;
+
 // SparePart: Represents the spare part name and availability in stock
 public class SparePart {
     private String sparePartName;

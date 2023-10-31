@@ -1,3 +1,5 @@
+package car;
+
 import static java.lang.String.format;
 
 // Car: Represents make, model, year and mileage of a car

@@ -1,3 +1,7 @@
+package persons;
+
+import persons.Person;
+
 // Mechanic: Represents a mechanic with his expertise and availability
 public class Mechanic extends Person {
     private String expertise;

@@ -1,3 +1,10 @@
+import car.Car;
+import car.SparePart;
+import car.SparePartsShop;
+import carservice.*;
+import persons.Customer;
+import persons.Mechanic;
+
 // Main: Runner class
 public class Main {
     public static void main(String[] args) {

@@ -1,3 +1,5 @@
+package carservice;
+
 // Appointment: Represents a date of appointment.
 public class Appointment {
     private String date;

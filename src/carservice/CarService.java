@@ -1,3 +1,5 @@
+package carservice;
+
 // CarService: Provides a name of the car service
 public class CarService {
     private String carServiceName;

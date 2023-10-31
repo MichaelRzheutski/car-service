@@ -1,3 +1,5 @@
+package persons;
+
 // Person: Represents an abstract person
 public abstract class Person {
     protected String name;

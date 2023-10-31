@@ -1,3 +1,11 @@
+package persons;
+
+import car.SparePart;
+import carservice.Appointment;
+import carservice.CarService;
+import carservice.Invoice;
+import carservice.ServiceRecord;
+
 import java.util.Formatter;
 import java.util.Locale;
 
