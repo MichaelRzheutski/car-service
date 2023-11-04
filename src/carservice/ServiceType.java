@@ -1,11 +1,10 @@
 package carservice;
 
+import java.util.Objects;
+
 // ServiceType: Represents service type and makes of parts it using in process.
-public class ServiceType {
+public class ServiceType extends CarService {
     private String serviceType;
-    private String makeOfOil;
-    private String makeOfTires;
-    private String makeOfBrakes;
 
     public ServiceType(String serviceType) {
         this.serviceType = serviceType;
@@ -19,27 +18,23 @@ public class ServiceType {
         this.serviceType = serviceType;
     }
 
-    public String getMakeOfOil() {
-        return makeOfOil;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ServiceType that = (ServiceType) o;
+        return Objects.equals(serviceType, that.serviceType);
     }
 
-    public void setMakeOfOil(String makeOfOil) {
-        this.makeOfOil = makeOfOil;
+    @Override
+    public int hashCode() {
+        return Objects.hash(serviceType);
     }
 
-    public String getMakeOfTires() {
-        return makeOfTires;
-    }
-
-    public void setMakeOfTires(String makeOfTires) {
-        this.makeOfTires = makeOfTires;
-    }
-
-    public String getMakeOfBrakes() {
-        return makeOfBrakes;
-    }
-
-    public void setMakeOfBrakes(String makeOfBrakes) {
-        this.makeOfBrakes = makeOfBrakes;
+    @Override
+    public String toString() {
+        return "ServiceType{" +
+                "serviceType='" + serviceType + '\'' +
+                '}';
     }
 }
