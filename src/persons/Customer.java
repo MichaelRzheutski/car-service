@@ -9,8 +9,7 @@ import java.util.Formatter;
 import java.util.Locale;
 import java.util.Objects;
 
-import static helpers.ConsoleColors.ANSI_RESET;
-import static helpers.ConsoleColors.ANSI_YELLOW;
+import static helpers.ConsoleColors.*;
 
 // Customer: Represents a whole information about customer
 public class Customer extends Person {
@@ -41,59 +40,58 @@ public class Customer extends Person {
     public static void showCustomers(Customer[] customers) {
 
         for (Customer customer : customers) {
-            System.out.printf(
-                    ANSI_YELLOW + "Имя и фамилия клиента: %s %s\n",
-                    customer.getName(),
-                    customer.getSurname() + ANSI_RESET
+            System.out.println(
+                    ANSI_GREEN + "Имя и фамилия клиента: " + ANSI_YELLOW
+                            + customer.getName() + " " + customer.getSurname() + ANSI_RESET
             );
             System.out.println(
-                    ANSI_YELLOW + "Телефон: "
+                    ANSI_GREEN + "Телефон: " + ANSI_YELLOW
                             + customer.getContactInformation() + ANSI_RESET
             );
-            System.out.printf(
-                    ANSI_YELLOW + "Дата поступления авто в обслуживание: %s\n",
-                    customer.getAppointment().getDate() + ANSI_RESET
+            System.out.println(
+                    ANSI_GREEN + "Дата поступления авто в обслуживание: " + ANSI_YELLOW
+                    + customer.getAppointment().getDate() + ANSI_RESET
             );
             System.out.println(
-                    ANSI_YELLOW + "Марка авто: " + customer.getCarName() + ANSI_RESET);
+                    ANSI_GREEN + "Марка авто: " + ANSI_YELLOW + customer.getCarName() + ANSI_RESET);
             System.out.println(
-                    ANSI_YELLOW + "Услуга: "
+                    ANSI_GREEN + "Услуга: " + ANSI_YELLOW
                             + customer.getServiceRecord().getServiceProvided().getServiceType()
                             + ANSI_RESET
             );
             System.out.println(
-                    ANSI_YELLOW + "Дата оказания услуги: "
+                    ANSI_GREEN + "Дата оказания услуги: " + ANSI_YELLOW
                             + customer.getServiceRecord().getServiceDate()
                             + ANSI_RESET
             );
             Formatter serviceCostFormat = new Formatter(Locale.US).format(
-                    ANSI_YELLOW + "Стоимость услуги: %.2f руб\n"
+                    ANSI_GREEN + "Стоимость услуги: " + ANSI_YELLOW + "%.2f руб\n"
                             + ANSI_RESET, customer.getServiceRecord().getServiceCost());
             System.out.printf(serviceCostFormat.toString());
-            System.out.printf(
-                    ANSI_YELLOW
-                            + "Механик: %s %s | Квалификация: %s | Доступность специалиста: %s\n"
-                            + ANSI_RESET,
-                    customer.getMechanic().getName(),
-                    customer.getMechanic().getSurname(),
-                    customer.getMechanic().getExpertise(),
-                    customer.getMechanic().getAvailability()
+            System.out.println(
+                    ANSI_GREEN + "Механик: " + ANSI_YELLOW + customer.getMechanic().getName() + " "
+                            + customer.getMechanic().getSurname() + ANSI_GREEN + " | Квалификация: " + ANSI_YELLOW
+                            + customer.getMechanic().getExpertise() + ANSI_GREEN + " | Доступность специалиста: "
+                            + ANSI_YELLOW + customer.getMechanic().getAvailability() + ANSI_RESET
             );
 
             if (customer.getSparePart().isInStock()) {
-                System.out.printf(
-                        ANSI_YELLOW + "Запчасть: '%s' в наличии на складе\n" + ANSI_RESET,
-                        customer.getSparePart().getSparePartType()
+                System.out.println(
+                        ANSI_GREEN + "Запчасть: " + ANSI_YELLOW
+                                + customer.getSparePart().getSparePartType() + ANSI_YELLOW
+                                + "в наличии на складе" + ANSI_RESET
+
                 );
             } else {
-                System.out.printf(
-                        ANSI_YELLOW + "Запчасть: '%s' отсутствует на складе\n" + ANSI_RESET,
-                        customer.getSparePart().getSparePartType()
+                System.out.println(
+                        ANSI_GREEN + "Запчасть: " + ANSI_YELLOW
+                                + customer.getSparePart().getSparePartType() + ANSI_YELLOW
+                                + "отсутствует на складе" + ANSI_RESET
                 );
             }
 
             Formatter invoiceFormat = new Formatter(Locale.US).format(
-                    ANSI_YELLOW + "Счёт на сумму %.2f руб %s\n" + ANSI_RESET,
+                    ANSI_GREEN + "Счёт на сумму: " + ANSI_YELLOW + "%.2f руб %s\n" + ANSI_RESET,
                     customer.getInvoice().getTotalCost(),
                     customer.getInvoice().getPaymentStatus());
             System.out.printf(invoiceFormat.toString());
