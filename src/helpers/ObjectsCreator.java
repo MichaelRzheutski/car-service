@@ -75,13 +75,13 @@ public class ObjectsCreator {
 
     // Create mechanics
     public Mechanic vladlenPoddubitsky = new Mechanic(
-            "Владлен", "Поддубицкий", "высшая", "Доступен"
+            "Владлен", "Поддубицкий", "высшая", "доступен"
     );
     public Mechanic vyacheslavMarshal = new Mechanic(
-            "Вячеслав", "Маршал", "средняя", "Занят"
+            "Вячеслав", "Маршал", "средняя", "занят"
     );
     public Mechanic evgenyBely = new Mechanic(
-            "Евгений", "Белый", "высшая", "Занят"
+            "Евгений", "Белый", "высшая", "занят"
     );
 
     // Supply spare parts to the shop

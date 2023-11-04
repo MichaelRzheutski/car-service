@@ -72,8 +72,8 @@ public class RepairmentTimeCalculator {
                 OBJECTS_CREATOR.bmwX6Diagnostics.getDiagnosticsTime()
         );
 
-        System.out.println(ANSI_YELLOW + "Общее время ремонта автомобиля в днях: " +
-                diagnosticsTime + ANSI_RESET
+        System.out.println(ANSI_GREEN + "Общее время ремонта автомобиля в днях: "
+                + ANSI_YELLOW + diagnosticsTime + ANSI_RESET
         );
         System.out.println();
     }

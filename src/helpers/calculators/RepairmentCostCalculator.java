@@ -181,7 +181,7 @@ public class RepairmentCostCalculator {
                 OBJECTS_CREATOR.bmwX6Diagnostics.getDiagnosticsTime()
         );
 
-        System.out.println(ANSI_YELLOW + "Общая стоимость ремонта автомобиля: " +
+        System.out.println(ANSI_GREEN + "Общая стоимость ремонта автомобиля: " + ANSI_YELLOW +
                 OBJECTS_CREATOR.alexeyPrivolnovInvoice.getTotalCost() + ANSI_RESET
         );
         System.out.println();
