@@ -1,6 +1,6 @@
 package persons;
 
-import persons.Person;
+import java.util.Objects;
 
 // Mechanic: Represents a mechanic with his expertise and availability
 public class Mechanic extends Person {
@@ -29,5 +29,28 @@ public class Mechanic extends Person {
 
     public void setAvailability(String availability) {
         this.availability = availability;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanic mechanic = (Mechanic) o;
+        return Objects.equals(expertise, mechanic.expertise)
+                && Objects.equals(availability, mechanic.availability
+        );
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(expertise, availability);
+    }
+
+    @Override
+    public String toString() {
+        return "Mechanic{" +
+                "expertise='" + expertise + '\'' +
+                ", availability='" + availability + '\'' +
+                '}';
     }
 }
