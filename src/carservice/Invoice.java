@@ -1,7 +1,9 @@
 package carservice;
 
+import java.util.Objects;
+
 // Invoice: Represents an invoice for a customer with total cost and payment status
-public class Invoice {
+public class Invoice extends CarService {
     private double totalCost;
     private String paymentStatus;
 
@@ -26,4 +28,25 @@ public class Invoice {
         this.paymentStatus = paymentStatus;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Invoice invoice = (Invoice) o;
+        return Double.compare(invoice.totalCost, totalCost) == 0
+                && Objects.equals(paymentStatus, invoice.paymentStatus);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(totalCost, paymentStatus);
+    }
+
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "totalCost=" + totalCost +
+                ", paymentStatus='" + paymentStatus + '\'' +
+                '}';
+    }
 }
