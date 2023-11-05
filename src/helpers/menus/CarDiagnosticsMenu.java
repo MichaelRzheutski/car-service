@@ -18,8 +18,19 @@ public class CarDiagnosticsMenu {
         System.out.println("[3]. Диагностика Mercedes Benz");
         System.out.println("[0]. Выход");
 
-        int option = scanner.nextInt();
-        scanner.nextLine();
+        int option;
+
+        while (true) {
+            if (scanner.hasNextInt()) {
+                option = scanner.nextInt();
+                break;
+            } else {
+                System.out.println(
+                        ANSI_RED + "Вы ввели неверный номер, попробуйте ещё раз!" + ANSI_RESET
+                );
+                scanner.next();
+            }
+        }
 
         while (!exit) {
             switch (option) {

@@ -30,10 +30,21 @@ public class AppMainMenu {
             System.out.println("[2]. Показать список клиентов автосервиса");
             System.out.println("[3]. Показать список машин обслуживающихся в автосервисе");
             System.out.println("[4]. Магазин автозапчастей");
-            System.out.println("[0]. Выйти");
+            System.out.println("[0]. Выйти из программы");
 
-            int option = scanner.nextInt();
-            scanner.nextLine();
+            int option;
+
+            while (true) {
+                if (scanner.hasNextInt()) {
+                    option = scanner.nextInt();
+                    break;
+                } else {
+                    System.out.println(
+                            ANSI_RED + "Вы ввели неверный номер, попробуйте ещё раз!" + ANSI_RESET
+                    );
+                    scanner.next();
+                }
+            }
 
             switch (option) {
                 case 0 -> exit = true;
