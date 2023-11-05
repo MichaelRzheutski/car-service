@@ -138,13 +138,13 @@ public class ObjectsCreator {
     public Car[] cars = {bmwX6, toyotaLandCruiser, mercedesBenz};
 
     // Create service records for customers
-    public ProvidedService alexeyPrivolnovService = new ProvidedService(
+    public ServiceType alexeyPrivolnovService = new ServiceType(
             SERVICE_TYPE_OIL_CHANGE, OIL_CHANGE_SERVICE_DATE, OIL_CHANGE_SERVICE_COST
     );
-    public ProvidedService sergeyVlasovService = new ProvidedService(
+    public ServiceType sergeyVlasovService = new ServiceType(
             SERVICE_TYRE_ROTATION, TYRE_ROTATION_SERVICE_DATE, TYRE_ROTATION_SERVICE_COST
     );
-    public ProvidedService vladimirDolginService = new ProvidedService(
+    public ServiceType vladimirDolginService = new ServiceType(
             SERVICE_BRAKES_CHANGE, BRACKES_CHANGE_SERVICE_DATE, BRACKES_CHANGE_SERVICE_COST
     );
 
