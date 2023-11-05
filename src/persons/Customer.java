@@ -3,7 +3,7 @@ package persons;
 import car.SparePart;
 import carservice.Appointment;
 import carservice.Invoice;
-import carservice.ProvidedService;
+import carservice.ServiceType;
 
 import java.util.Formatter;
 import java.util.Locale;
@@ -16,21 +16,21 @@ public class Customer extends Person {
     private Appointment appointment;
     private String contactInformation;
     private String carName;
-    private ProvidedService providedService;
+    private ServiceType serviceType;
     private Mechanic mechanic;
     private SparePart sparePart;
     private Invoice invoice;
 
     public Customer(
             Appointment appointment, String name, String surname,
-            String contactInformation, String carName, ProvidedService providedService,
+            String contactInformation, String carName, ServiceType serviceType,
             Mechanic mechanic, SparePart sparePart, Invoice invoice) {
         super(name, surname);
         this.appointment = appointment;
         this.name = name;
         this.contactInformation = contactInformation;
         this.carName = carName;
-        this.providedService = providedService;
+        this.serviceType = serviceType;
         this.mechanic = mechanic;
         this.sparePart = sparePart;
         this.invoice = invoice;
@@ -56,7 +56,7 @@ public class Customer extends Person {
                     ANSI_GREEN + "Марка авто: " + ANSI_YELLOW + customer.getCarName() + ANSI_RESET);
             System.out.println(
                     ANSI_GREEN + "Услуга: " + ANSI_YELLOW
-                            + customer.getServiceRecord().getServiceProvided().getServiceType()
+                            + customer.getServiceRecord().getServiceType()
                             + ANSI_RESET
             );
             System.out.println(
@@ -124,12 +124,12 @@ public class Customer extends Person {
         this.carName = carName;
     }
 
-    public ProvidedService getServiceRecord() {
-        return providedService;
+    public ServiceType getServiceRecord() {
+        return serviceType;
     }
 
-    public void setServiceRecord(ProvidedService providedService) {
-        this.providedService = providedService;
+    public void setServiceRecord(ServiceType serviceType) {
+        this.serviceType = serviceType;
     }
 
     public Mechanic getMechanic() {
@@ -164,7 +164,7 @@ public class Customer extends Person {
         return Objects.equals(appointment, customer.appointment)
                 && Objects.equals(contactInformation, customer.contactInformation)
                 && Objects.equals(carName, customer.carName)
-                && Objects.equals(providedService, customer.providedService)
+                && Objects.equals(serviceType, customer.serviceType)
                 && Objects.equals(mechanic, customer.mechanic)
                 && Objects.equals(sparePart, customer.sparePart)
                 && Objects.equals(invoice, customer.invoice
@@ -174,7 +174,7 @@ public class Customer extends Person {
     @Override
     public int hashCode() {
         return Objects.hash(
-                appointment, contactInformation, carName, providedService,
+                appointment, contactInformation, carName, serviceType,
                 mechanic, sparePart, invoice
         );
     }
