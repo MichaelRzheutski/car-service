@@ -7,12 +7,21 @@ public class Mechanic extends Person {
     private String expertise;
     private String availability;
 
-    public Mechanic(String name, String surname, String expertise, String availability) {
+    public Mechanic(
+            String name, String surname,
+            String expertise, String availability
+    ) {
         super(name, surname);
         this.name = name;
         this.surname = surname;
         this.expertise = expertise;
         this.availability = availability;
+        this.role = "Механик";
+    }
+
+    @Override
+    public String showPersonRole() {
+        return role;
     }
 
     public String getExpertise() {
