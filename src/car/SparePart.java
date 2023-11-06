@@ -8,7 +8,8 @@ import java.util.Objects;
 import static helpers.ConsoleColors.ANSI_RESET;
 import static helpers.ConsoleColors.ANSI_YELLOW;
 
-// SparePart: Represents the spare part name and availability in stock
+// SparePart: Represents type, make, cost, delivery days
+// and availability spares in stock
 public class SparePart extends Car {
     private SparePartTypes sparePartType;
     private SparePartMakes sparePartMake;
