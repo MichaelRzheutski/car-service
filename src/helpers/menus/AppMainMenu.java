@@ -5,7 +5,7 @@ import helpers.ObjectsCreator;
 import java.util.Scanner;
 
 import static car.Car.showCars;
-import static carservice.SparePartsShop.showSparePartsInStore;
+import static car.SparePart.calculateSparePartCost;
 import static helpers.ConsoleColors.*;
 import static helpers.menus.AutoServiceMenu.autoServiceMenu;
 import static persons.Customer.showCustomers;
@@ -51,7 +51,7 @@ public class AppMainMenu {
                 case 1 -> autoServiceMenu(scanner, exit);
                 case 2 -> showCustomers(OBJECTS_CREATOR.customers);
                 case 3 -> showCars(OBJECTS_CREATOR.cars);
-                case 4 -> showSparePartsInStore(OBJECTS_CREATOR.sparePartsInShop);
+                case 4 -> calculateSparePartCost(OBJECTS_CREATOR.spareParts, OBJECTS_CREATOR.cars);
                 default -> System.out.printf(
                         "%sНеверная операция, попробуйте ещё раз!%s\n",
                         ANSI_RED, ANSI_RESET
