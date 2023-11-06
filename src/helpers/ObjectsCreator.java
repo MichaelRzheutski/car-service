@@ -3,23 +3,25 @@ package helpers;
 import car.Car;
 import car.CarDiagnostics;
 import car.SparePart;
-import carservice.*;
+import carservice.Appointment;
+import carservice.Invoice;
+import carservice.ServiceType;
+import carservice.SparePartsShop;
 import persons.Customer;
 import persons.Mechanic;
 
-import static helpers.cars.CarYears.*;
 import static helpers.cars.Cars.*;
 import static helpers.spareparts.SparePartMakes.*;
 import static helpers.spareparts.SparePartTypes.*;
 
 public class ObjectsCreator {
-    private final boolean IS_IN_STOCK = true;
-    private final boolean IS_NOT_IN_STOCK = false;
+    public static final String IS_IN_STOCK = "да";
+    public static final String IS_NOT_IN_STOCK = "нет";
 
     // Cars' mileage
-    private static final int BMW_X6_MILEAGE = 1000;
-    private static final int TOYOTA_LAND_CRUISER_MILEAGE = 20000;
-    private static final int MERCEDES_BENZ_MILEAGE = 500000;
+    public static final int BMW_X6_MILEAGE = 1000;
+    public static final int TOYOTA_LAND_CRUISER_MILEAGE = 20000;
+    public static final int MERCEDES_BENZ_MILEAGE = 500000;
 
     // Cars' type of service
     public static final String SERVICE_TYPE_OIL_CHANGE = "Замена моторного масла";
@@ -49,11 +51,6 @@ public class ObjectsCreator {
     public static final String MECHANIC_ENGENY_BELY_SURNAME = "Белый";
     public static final String MECHANIC_ENGENY_BELY_EXPERTISE = "стажёр";
     public static final String MECHANIC_ENGENY_BELY_AVAILABILITY = "свободен";
-
-    // Cost of spares in the spare part shop
-    public static final double SPARE_SHOP_OIL_COST = 50.00;
-    public static final double SPARE_SHOP_TYRES_COST = 200.00;
-    public static final double SPARE_SHOP_BRAKES_COST = 100.00;
 
     // Apointment for diagnostics' dates
     public static final String ALEXEY_PRIVOLNOV_APPOINTMENT_DATE = "10 Августа 2023";
@@ -103,50 +100,23 @@ public class ObjectsCreator {
     public SparePart oilSpare = new SparePart(
             ENGINE_OIL,
             ENGINE_OIL_MAKE,
-            IS_IN_STOCK
+            IS_IN_STOCK,
+            50.00
     );
     public SparePart tiresSpare = new SparePart(
             TIRE_SET,
             TIRE_SET_MAKE,
-            IS_NOT_IN_STOCK
+            IS_NOT_IN_STOCK,
+            200.00
     );
     public SparePart brakesSpare = new SparePart(
             BRAKE_SET,
             BRAKE_SET_MAKE,
-            IS_IN_STOCK
+            IS_IN_STOCK,
+            100.00
     );
+    public SparePart[] spareParts = {oilSpare, tiresSpare, brakesSpare};
 
-    // Create cars
-    public Car bmwX6 = new Car(
-            BMW_X6,
-            YEAR_2023,
-            BMW_X6_MILEAGE,
-            new SparePart[]{oilSpare, tiresSpare, brakesSpare}
-    );
-    public Car toyotaLandCruiser = new Car(
-            TOYOTA_LAND_CRUISER,
-            YEAR_2020,
-            TOYOTA_LAND_CRUISER_MILEAGE,
-            new SparePart[]{oilSpare, tiresSpare}
-    );
-    public Car mercedesBenz = new Car(
-            MERCEDES_BENZ,
-            YEAR_2015,
-            MERCEDES_BENZ_MILEAGE,
-            new SparePart[]{oilSpare}
-    );
-    public Car[] cars = {bmwX6, toyotaLandCruiser, mercedesBenz};
-
-    // Create service records for customers
-    public ServiceType alexeyPrivolnovService = new ServiceType(
-            SERVICE_TYPE_OIL_CHANGE, OIL_CHANGE_SERVICE_DATE, OIL_CHANGE_SERVICE_COST
-    );
-    public ServiceType sergeyVlasovService = new ServiceType(
-            SERVICE_TYRE_ROTATION, TYRE_ROTATION_SERVICE_DATE, TYRE_ROTATION_SERVICE_COST
-    );
-    public ServiceType vladimirDolginService = new ServiceType(
-            SERVICE_BRAKES_CHANGE, BRACKES_CHANGE_SERVICE_DATE, BRACKES_CHANGE_SERVICE_COST
-    );
 
     // Create mechanics
     public Mechanic vladlenPoddubitsky = new Mechanic(
@@ -167,20 +137,53 @@ public class ObjectsCreator {
             MECHANIC_ENGENY_BELY_EXPERTISE,
             MECHANIC_ENGENY_BELY_AVAILABILITY
     );
+    public Mechanic[] mechanics = {vladlenPoddubitsky, vyacheslavMarshal, evgenyBely};
+
+    // Create cars
+    public Car bmwX6 = new Car(
+            BMW_X6,
+            2023,
+            BMW_X6_MILEAGE,
+            new SparePart[]{oilSpare, tiresSpare, brakesSpare}
+    );
+    public Car toyotaLandCruiser = new Car(
+            TOYOTA_LAND_CRUISER,
+            2020,
+            TOYOTA_LAND_CRUISER_MILEAGE,
+            new SparePart[]{oilSpare, tiresSpare}
+    );
+    public Car mercedesBenz = new Car(
+            MERCEDES_BENZ,
+            2015,
+            MERCEDES_BENZ_MILEAGE,
+            new SparePart[]{oilSpare}
+    );
+    public Car[] cars = {bmwX6, toyotaLandCruiser, mercedesBenz};
+
+    // Create service records for customers
+    public ServiceType alexeyPrivolnovService = new ServiceType(
+            SERVICE_TYPE_OIL_CHANGE,
+            OIL_CHANGE_SERVICE_DATE,
+            OIL_CHANGE_SERVICE_COST,
+            vladlenPoddubitsky
+    );
+    public ServiceType sergeyVlasovService = new ServiceType(
+            SERVICE_TYRE_ROTATION,
+            TYRE_ROTATION_SERVICE_DATE,
+            TYRE_ROTATION_SERVICE_COST,
+            vyacheslavMarshal
+    );
+    public ServiceType vladimirDolginService = new ServiceType(
+            SERVICE_BRAKES_CHANGE,
+            BRACKES_CHANGE_SERVICE_DATE,
+            BRACKES_CHANGE_SERVICE_COST,
+            evgenyBely
+    );
 
     // Supply spare parts to the shop
-    public SparePartsShop oil = new SparePartsShop(
-            oilSpare,
-            SPARE_SHOP_OIL_COST
-    );
-    public SparePartsShop tires = new SparePartsShop(
-            tiresSpare,
-            SPARE_SHOP_TYRES_COST
-    );
-    public SparePartsShop brakes = new SparePartsShop(
-            brakesSpare,
-            SPARE_SHOP_BRAKES_COST
-    );
+    public SparePartsShop oil = new SparePartsShop(oilSpare);
+    public SparePartsShop tires = new SparePartsShop(tiresSpare);
+    public SparePartsShop brakes = new SparePartsShop(brakesSpare);
     public SparePartsShop[] sparePartsInShop = {oil, tires, brakes};
 
     // Create appointments
