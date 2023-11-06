@@ -6,18 +6,20 @@ import java.util.Objects;
 public abstract class Person {
     protected String name;
     protected String surname;
-    protected String address;
+    protected String role;
 
     public Person(String name, String surname) {
         this.name = name;
         this.surname = surname;
     }
 
-    public Person(String name, String surname, String address) {
+    public Person(String name, String surname, String role) {
         this.name = name;
         this.surname = surname;
-        this.address = address;
+        this.role = role;
     }
+
+    public abstract String showPersonRole();
 
     public String getName() {
         return name;
@@ -35,12 +37,12 @@ public abstract class Person {
         this.surname = surname;
     }
 
-    public String getAddress() {
-        return address;
+    public String getRole() {
+        return role;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
@@ -50,13 +52,12 @@ public abstract class Person {
         Person person = (Person) o;
         return Objects.equals(name, person.name)
                 && Objects.equals(surname, person.surname)
-                && Objects.equals(address, person.address
-        );
+                && Objects.equals(role, person.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, address);
+        return Objects.hash(name, surname, role);
     }
 
     @Override
@@ -64,7 +65,7 @@ public abstract class Person {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", address='" + address + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }
