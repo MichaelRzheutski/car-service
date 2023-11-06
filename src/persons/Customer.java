@@ -34,6 +34,12 @@ public class Customer extends Person {
         this.mechanic = mechanic;
         this.sparePart = sparePart;
         this.invoice = invoice;
+        this.role = "Клиент";
+    }
+
+    @Override
+    public String showPersonRole() {
+        return role;
     }
 
     // Method shows whole info about customers
@@ -45,12 +51,16 @@ public class Customer extends Person {
                             + customer.getName() + " " + customer.getSurname() + ANSI_RESET
             );
             System.out.println(
+                    ANSI_GREEN + "Роль: " + ANSI_YELLOW
+                            + customer.getRole() + ANSI_RESET
+            );
+            System.out.println(
                     ANSI_GREEN + "Телефон: " + ANSI_YELLOW
                             + customer.getContactInformation() + ANSI_RESET
             );
             System.out.println(
                     ANSI_GREEN + "Дата поступления авто в обслуживание: " + ANSI_YELLOW
-                    + customer.getAppointment().getDate() + ANSI_RESET
+                            + customer.getAppointment().getDate() + ANSI_RESET
             );
             System.out.println(
                     ANSI_GREEN + "Марка авто: " + ANSI_YELLOW + customer.getCarName() + ANSI_RESET);
@@ -75,7 +85,7 @@ public class Customer extends Person {
                             + ANSI_YELLOW + customer.getMechanic().getAvailability() + ANSI_RESET
             );
 
-            if (customer.getSparePart().isInStock()) {
+            if (customer.getSparePart().isInStock().equals("да")) {
                 System.out.println(
                         ANSI_GREEN + "Запчасть: " + ANSI_YELLOW
                                 + customer.getSparePart().getSparePartType() + ANSI_YELLOW
@@ -160,6 +170,7 @@ public class Customer extends Person {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Customer customer = (Customer) o;
         return Objects.equals(appointment, customer.appointment)
                 && Objects.equals(contactInformation, customer.contactInformation)
@@ -167,15 +178,14 @@ public class Customer extends Person {
                 && Objects.equals(serviceType, customer.serviceType)
                 && Objects.equals(mechanic, customer.mechanic)
                 && Objects.equals(sparePart, customer.sparePart)
-                && Objects.equals(invoice, customer.invoice
-        );
+                && Objects.equals(invoice, customer.invoice);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-                appointment, contactInformation, carName, serviceType,
-                mechanic, sparePart, invoice
+                super.hashCode(), appointment, contactInformation,
+                carName, serviceType, mechanic, sparePart, invoice
         );
     }
 }
