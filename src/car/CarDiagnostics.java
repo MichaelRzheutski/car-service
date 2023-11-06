@@ -3,7 +3,6 @@ package car;
 import java.util.Objects;
 
 import static helpers.ConsoleColors.*;
-import static helpers.ConsoleColors.ANSI_GREEN;
 
 public class CarDiagnostics extends Car {
     private Car carForDiagnostics;
@@ -31,7 +30,7 @@ public class CarDiagnostics extends Car {
         );
         System.out.println(
                 ANSI_GREEN + "Пробег: " + ANSI_YELLOW +
-                        carDiagnostics.getCarForDiagnostics().getMileage() + ANSI_RESET
+                        carDiagnostics.getCarForDiagnostics().getMileage() + " км" + ANSI_RESET
         );
         System.out.println(
                 ANSI_GREEN + "Результат диагностики: " + ANSI_YELLOW +
