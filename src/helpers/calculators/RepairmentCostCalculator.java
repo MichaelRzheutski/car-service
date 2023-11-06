@@ -1,7 +1,6 @@
 package helpers.calculators;
 
 import helpers.ObjectsCreator;
-import helpers.cars.CarYears;
 
 import java.util.Scanner;
 
@@ -55,13 +54,13 @@ public class RepairmentCostCalculator {
 
     // Method checks car manufacture year
     public static void checkCarManufactureYear(
-            CarYears carManufactureYear, double repairmentCost,
+            int carManufactureYear, double repairmentCost,
             String name, String surname
     ) {
         double totalRepairmentCost = repairmentCost;
         String nameAndSurname = name + " " + surname;
 
-        if (carManufactureYear.getCarMake() >= 2021 && carManufactureYear.getCarMake() < 2025) {
+        if (carManufactureYear >= 2021 && carManufactureYear < 2025) {
             totalRepairmentCost *= 2;
         }
 
@@ -155,7 +154,7 @@ public class RepairmentCostCalculator {
 
     // Method calculates total cost of repairment
     public static void repairmentCostCalculator(
-            CarYears carManufactureYear, String diagnosticsResult,
+            int carManufactureYear, String diagnosticsResult,
             String damagesSeverity, int diagnosticsTime
     ) {
         checkCarManufactureYear(
