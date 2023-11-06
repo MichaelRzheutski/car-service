@@ -1,5 +1,7 @@
 package carservice;
 
+import persons.Mechanic;
+
 import java.util.Objects;
 
 // ServiceRecord: Represents provided service, date and cost
@@ -7,11 +9,16 @@ public class ServiceType extends CarService {
     private String serviceType;
     private String serviceDate;
     private double serviceCost;
+    private Mechanic mechanic;
 
-    public ServiceType(String serviceType, String serviceDate, double serviceCost) {
+    public ServiceType(
+            String serviceType, String serviceDate,
+            double serviceCost, Mechanic mechanic
+    ) {
         this.serviceType = serviceType;
         this.serviceDate = serviceDate;
         this.serviceCost = serviceCost;
+        this.mechanic = mechanic;
     }
 
     public String getServiceType() {
@@ -38,27 +45,38 @@ public class ServiceType extends CarService {
         this.serviceCost = serviceCost;
     }
 
+    public Mechanic getMechanic() {
+        return mechanic;
+    }
+
+    public void setMechanic(Mechanic mechanic) {
+        this.mechanic = mechanic;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ServiceType serviceType = (ServiceType) o;
-        return Double.compare(serviceType.serviceCost, serviceCost) == 0
-                && Objects.equals(this.serviceType, serviceType.serviceType)
-                && Objects.equals(serviceDate, serviceType.serviceDate);
+        ServiceType that = (ServiceType) o;
+        return Double.compare(that.serviceCost, serviceCost) == 0
+                && Objects.equals(serviceType, that.serviceType)
+                && Objects.equals(serviceDate, that.serviceDate)
+                && Objects.equals(mechanic, that.mechanic
+        );
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(serviceType, serviceDate, serviceCost);
+        return Objects.hash(serviceType, serviceDate, serviceCost, mechanic);
     }
 
     @Override
     public String toString() {
-        return "ProvidedService{" +
-                "serviceProvided='" + serviceType + '\'' +
+        return "ServiceType{" +
+                "serviceType='" + serviceType + '\'' +
                 ", serviceDate='" + serviceDate + '\'' +
                 ", serviceCost=" + serviceCost +
+                ", mechanic=" + mechanic +
                 '}';
     }
 }
