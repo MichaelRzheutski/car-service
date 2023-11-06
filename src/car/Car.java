@@ -1,6 +1,5 @@
 package car;
 
-import helpers.cars.CarYears;
 import helpers.cars.Cars;
 
 import java.util.Arrays;
@@ -8,19 +7,20 @@ import java.util.Objects;
 
 import static helpers.ConsoleColors.*;
 
-// Car: Represents make, model, year and mileage of a car
+// Car: Represents make, model, manufacture year, mileage and spare parts
 public class Car {
-    private Cars carMake;
-    private CarYears carManufactureYear;
-    private int mileage;
-    private SparePart[] spareParts;
+    protected Cars carMake;
+    protected int carManufactureYear;
+    protected int mileage;
+    protected SparePart[] spareParts;
 
     public Car() {
     }
 
     public Car(
-            Cars carMake, CarYears carManufactureYear,
-            int mileage, SparePart[] spareParts) {
+            Cars carMake, int carManufactureYear,
+            int mileage, SparePart[] spareParts
+    ) {
         this.carMake = carMake;
         this.carManufactureYear = carManufactureYear;
         this.mileage = mileage;
@@ -42,7 +42,7 @@ public class Car {
                             + car.getMileage() + ANSI_RESET
             );
             System.out.println(
-                    ANSI_GREEN + "Информация о запчастях: " + ANSI_YELLOW
+                    ANSI_GREEN + "Информация о запчастях: " + ANSI_RESET
                             + Arrays.toString(car.getSpareParts()) + ANSI_RESET
             );
             System.out.println();
@@ -57,11 +57,11 @@ public class Car {
         this.carMake = carMake;
     }
 
-    public CarYears getCarManufactureYear() {
+    public int getCarManufactureYear() {
         return carManufactureYear;
     }
 
-    public void setCarManufactureYear(CarYears carManufactureYear) {
+    public void setCarManufactureYear(int carManufactureYear) {
         this.carManufactureYear = carManufactureYear;
     }
 
@@ -101,11 +101,9 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "carMake='" + carMake + '\'' +
-                ", carManufactureYear=" + carManufactureYear +
-                ", mileage=" + mileage +
-                ", spareParts=" + Arrays.toString(spareParts) +
-                '}';
+        return "Марка авто: " + carMake +
+                ", Год выпуска авто: " + carManufactureYear +
+                ", Пробег: " + mileage +
+                ", Запчасти: " + Arrays.toString(spareParts);
     }
 }
