@@ -1,9 +1,10 @@
-import static helpers.menus.AppMainMenu.mainMenu;
+import helpers.menus.AppMainMenu;
 
 // Main: Runner class
 public class Main {
     public static void main(String[] args) {
         // Show the AutoService menu
-        mainMenu();
+        AppMainMenu appMainMenu = new AppMainMenu();
+        appMainMenu.mainMenu();
     }
 }
