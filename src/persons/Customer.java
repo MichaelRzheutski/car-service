@@ -12,7 +12,7 @@ import java.util.Objects;
 import static helpers.ConsoleColors.*;
 
 // Customer: Represents a whole information about customer
-public class Customer extends Person {
+public final class Customer extends Person {
     private Appointment appointment;
     private String contactInformation;
     private String carName;

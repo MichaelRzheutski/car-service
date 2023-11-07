@@ -1,8 +1,5 @@
 package car;
 
-import helpers.spareparts.SparePartMakes;
-import helpers.spareparts.SparePartTypes;
-
 import java.util.Objects;
 
 import static helpers.ConsoleColors.ANSI_RESET;
@@ -11,14 +8,14 @@ import static helpers.ConsoleColors.ANSI_YELLOW;
 // SparePart: Represents type, make, cost, delivery days
 // and availability spares in stock
 public class SparePart extends Car {
-    private SparePartTypes sparePartType;
-    private SparePartMakes sparePartMake;
+    private String sparePartType;
+    private String sparePartMake;
     private String isInStock;
     private double sparePartCost;
     private int deliveryDays;
 
     public SparePart(
-            SparePartTypes sparePartType, SparePartMakes sparePartMake,
+            String sparePartType, String sparePartMake,
             String isInStock, double sparePartCost
     ) {
         this.sparePartType = sparePartType;
@@ -53,19 +50,19 @@ public class SparePart extends Car {
         }
     }
 
-    public SparePartTypes getSparePartType() {
+    public String getSparePartType() {
         return sparePartType;
     }
 
-    public void setSparePartType(SparePartTypes sparePart) {
+    public void setSparePartType(String sparePart) {
         this.sparePartType = sparePart;
     }
 
-    public SparePartMakes getSparePartMake() {
+    public String getSparePartMake() {
         return sparePartMake;
     }
 
-    public void setSparePartMake(SparePartMakes sparePartMake) {
+    public void setSparePartMake(String sparePartMake) {
         this.sparePartMake = sparePartMake;
     }
 

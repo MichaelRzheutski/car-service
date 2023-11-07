@@ -3,7 +3,7 @@ package carservice;
 import java.util.Objects;
 
 // Appointment: Represents a date of appointment.
-public class Appointment extends CarService {
+public final class Appointment extends CarService {
     private String date;
 
     public Appointment(String date) {

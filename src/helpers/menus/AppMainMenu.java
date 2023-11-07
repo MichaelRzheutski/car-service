@@ -1,23 +1,29 @@
 package helpers.menus;
 
+import car.Car;
 import helpers.ObjectsCreator;
 
 import java.util.Scanner;
 
-import static car.Car.showCars;
 import static car.SparePart.calculateSparePartCost;
 import static helpers.ConsoleColors.*;
 import static helpers.menus.AutoServiceMenu.autoServiceMenu;
 import static persons.Customer.showCustomers;
 
-public class AppMainMenu {
+public final class AppMainMenu {
     private static final ObjectsCreator OBJECTS_CREATOR = new ObjectsCreator();
 
-    public static void mainMenu() {
-        // Main menu
+    // Greeting a customer
+    static {
         System.out.printf(
                 "%sДобро пожаловать в автосервис '4 колеса'!%s\n", ANSI_GREEN, ANSI_RESET
         );
+    }
+
+    Car car = new Car();
+
+    public final void mainMenu() {
+        // Main menu
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
 
@@ -50,7 +56,7 @@ public class AppMainMenu {
                 case 0 -> exit = true;
                 case 1 -> autoServiceMenu(scanner, exit);
                 case 2 -> showCustomers(OBJECTS_CREATOR.customers);
-                case 3 -> showCars(OBJECTS_CREATOR.cars);
+                case 3 -> car.showCars(OBJECTS_CREATOR.cars);
                 case 4 -> calculateSparePartCost(OBJECTS_CREATOR.spareParts, OBJECTS_CREATOR.cars);
                 default -> System.out.printf(
                         "%sНеверная операция, попробуйте ещё раз!%s\n",
@@ -58,6 +64,7 @@ public class AppMainMenu {
                 );
             }
         }
-
     }
+
+
 }

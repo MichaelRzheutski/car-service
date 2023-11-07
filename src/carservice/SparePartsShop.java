@@ -5,7 +5,7 @@ import car.SparePart;
 import java.util.Objects;
 
 // SparePartsShop: Represents the name and cost of the spare part which is on sale
-public class SparePartsShop extends CarService {
+public final class SparePartsShop extends CarService {
     private SparePart sparePartName;
 
     public SparePartsShop(SparePart sparePartName) {

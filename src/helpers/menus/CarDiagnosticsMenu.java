@@ -7,7 +7,7 @@ import java.util.Scanner;
 import static car.CarDiagnostics.checkCar;
 import static helpers.ConsoleColors.*;
 
-public class CarDiagnosticsMenu {
+public final class CarDiagnosticsMenu {
     private static final ObjectsCreator OBJECTS_CREATOR = new ObjectsCreator();
 
     // Car diagnostics menu

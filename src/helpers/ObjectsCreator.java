@@ -10,13 +10,24 @@ import carservice.SparePartsShop;
 import persons.Customer;
 import persons.Mechanic;
 
-import static helpers.cars.Cars.*;
-import static helpers.spareparts.SparePartMakes.*;
-import static helpers.spareparts.SparePartTypes.*;
-
-public class ObjectsCreator {
+public final class ObjectsCreator {
     public static final String IS_IN_STOCK = "да";
     public static final String IS_NOT_IN_STOCK = "нет";
+
+    // Spare part types
+    public static final String ENGINE_OIL = "Моторное масло";
+    public static final String TIRE_SET = "Комплект шин";
+    public static final String BRAKE_SET = "Комплект тормозов";
+
+    // Spare part makes
+    public static final String ENGINE_OIL_MAKE = "Mobil 1";
+    public static final String TIRE_SET_MAKE = "Белшина";
+    public static final String BRAKE_SET_MAKE = "Шустрые тормоза";
+
+    // Cars
+    public static final String BMW_X6 = "BMW X6";
+    public static final String TOYOTA_LAND_CRUISER = "Toyota Land Cruiser";
+    public static final String MERCEDES_BENZ = "Mercedes Benz";
 
     // Cars' mileage
     public static final int BMW_X6_MILEAGE = 1000;
@@ -116,7 +127,6 @@ public class ObjectsCreator {
             100.00
     );
     public SparePart[] spareParts = {oilSpare, tiresSpare, brakesSpare};
-
 
     // Create mechanics
     public Mechanic vladlenPoddubitsky = new Mechanic(

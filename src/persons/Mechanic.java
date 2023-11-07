@@ -3,7 +3,7 @@ package persons;
 import java.util.Objects;
 
 // Mechanic: Represents a mechanic with his expertise and availability
-public class Mechanic extends Person {
+public final class Mechanic extends Person {
     private String expertise;
     private String availability;
 

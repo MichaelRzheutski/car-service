@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 import static helpers.ConsoleColors.*;
 
-public class RepairmentTimeCalculator {
+public final class RepairmentTimeCalculator {
     private static final ObjectsCreator OBJECTS_CREATOR = new ObjectsCreator();
 
     // Calculate car repairment time

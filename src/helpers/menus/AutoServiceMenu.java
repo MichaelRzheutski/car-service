@@ -1,5 +1,7 @@
 package helpers.menus;
 
+import car.Car;
+
 import java.util.Scanner;
 
 import static helpers.ConsoleColors.*;
@@ -7,7 +9,9 @@ import static helpers.calculators.RepairmentCostCalculator.calculateRepairmentCo
 import static helpers.calculators.RepairmentTimeCalculator.calculateRepairmentTime;
 import static helpers.menus.CarDiagnosticsMenu.diagnosticsServiceMenu;
 
-public class AutoServiceMenu {
+public final class AutoServiceMenu {
+    Car car = new Car();
+
     // AutoService menu
     public static void autoServiceMenu(Scanner scanner, boolean exit) {
         System.out.printf("%sУслуги доступные у нас в автосервисе%s\n", ANSI_GREEN, ANSI_RESET);

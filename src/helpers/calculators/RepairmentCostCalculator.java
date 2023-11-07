@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import static helpers.ConsoleColors.*;
 
-public class RepairmentCostCalculator {
+public final class RepairmentCostCalculator {
     private static final ObjectsCreator OBJECTS_CREATOR = new ObjectsCreator();
 
     // Calculate car repairment cost

@@ -5,7 +5,7 @@ import persons.Mechanic;
 import java.util.Objects;
 
 // ServiceRecord: Represents provided service, date and cost
-public class ServiceType extends CarService {
+public final class ServiceType extends CarService {
     private String serviceType;
     private String serviceDate;
     private double serviceCost;
