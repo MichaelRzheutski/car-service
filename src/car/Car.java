@@ -244,22 +244,27 @@ public class Car implements Washable, Paintable, BodyRepairable,
         return carManufactureYear == car.carManufactureYear
                 && mileage == car.mileage
                 && Objects.equals(carMake, car.carMake)
-                && Arrays.equals(spareParts, car.spareParts);
+                && Arrays.equals(spareParts, car.spareParts)
+                && Objects.equals(carWash, car.carWash)
+                && Objects.equals(carPaint, car.carPaint)
+                && Objects.equals(bodyRepairment, car.bodyRepairment)
+                && Objects.equals(electronicsRepairment, car.electronicsRepairment)
+                && Objects.equals(modernization, car.modernization);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(carMake, carManufactureYear, mileage);
+        int result = Objects.hash(carMake, carManufactureYear, mileage,
+                carWash, carPaint, bodyRepairment, electronicsRepairment, modernization);
         result = 31 * result + Arrays.hashCode(spareParts);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Марка авто: " + carMake +
-                ", Год выпуска авто: " + carManufactureYear +
-                ", Пробег: " + mileage +
-                ", Запчасти: " + Arrays.toString(spareParts) +
-                ", Внешний вид: " + carWash;
+        return  ANSI_GREEN + "Марка авто: " + ANSI_YELLOW + carMake +
+                ANSI_GREEN + ", Год выпуска авто: " + ANSI_YELLOW + carManufactureYear +
+                ANSI_GREEN + ", Пробег: " + ANSI_YELLOW + mileage +
+                ANSI_GREEN + ", Запчасти: " + ANSI_YELLOW + Arrays.toString(spareParts);
     }
 }

@@ -75,7 +75,7 @@ public final class Customer extends Person {
                             + ANSI_RESET
             );
             Formatter serviceCostFormat = new Formatter(Locale.US).format(
-                    ANSI_GREEN + "Стоимость услуги: " + ANSI_YELLOW + "%.2f руб\n"
+                    ANSI_GREEN + "Стоимость услуги: " + ANSI_YELLOW + "%.2f$\n"
                             + ANSI_RESET, customer.getServiceRecord().getServiceCost());
             System.out.printf(serviceCostFormat.toString());
             System.out.println(
@@ -88,20 +88,20 @@ public final class Customer extends Person {
             if (customer.getSparePart().isInStock().equals("да")) {
                 System.out.println(
                         ANSI_GREEN + "Запчасть: " + ANSI_YELLOW
-                                + customer.getSparePart().getSparePartType() + ANSI_YELLOW
-                                + "в наличии на складе" + ANSI_RESET
+                                + customer.getSparePart().getSparePartType() + ANSI_GREEN
+                                + " в наличии на складе" + ANSI_RESET
 
                 );
             } else {
                 System.out.println(
                         ANSI_GREEN + "Запчасть: " + ANSI_YELLOW
-                                + customer.getSparePart().getSparePartType() + ANSI_YELLOW
-                                + "отсутствует на складе" + ANSI_RESET
+                                + customer.getSparePart().getSparePartType() + ANSI_GREEN
+                                + " отсутствует на складе" + ANSI_RESET
                 );
             }
 
             Formatter invoiceFormat = new Formatter(Locale.US).format(
-                    ANSI_GREEN + "Счёт на сумму: " + ANSI_YELLOW + "%.2f руб %s\n" + ANSI_RESET,
+                    ANSI_GREEN + "Счёт на сумму: " + ANSI_YELLOW + "%.2f$"  + ANSI_GREEN + " %s\n",
                     customer.getInvoice().getTotalCost(),
                     customer.getInvoice().getPaymentStatus());
             System.out.printf(invoiceFormat.toString());
