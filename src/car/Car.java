@@ -33,6 +33,22 @@ public class Car implements Washable, Paintable, BodyRepairable,
         this.spareParts = spareParts;
     }
 
+    public Car(
+            String carMake, int carManufactureYear,
+            int mileage
+    ) {
+        this.carMake = carMake;
+        this.carManufactureYear = carManufactureYear;
+        this.mileage = mileage;
+    }
+
+    public Car(
+            String carMake, int carManufactureYear
+    ) {
+        this.carMake = carMake;
+        this.carManufactureYear = carManufactureYear;
+    }
+
     @Override
     public void isWashed(boolean carWash) {
         if (carWash) {
