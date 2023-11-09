@@ -79,13 +79,13 @@ public final class ObjectsCreator {
     public static final String VLADIMIR_DOLGIN_APPOINTMENT_DATE = "25 Сентября 2023";
 
     // Costs and payment statuses of invoices
-    public static final double ALEXEY_PRIVOLNOV_INVOICE_COST = 300.00;
+    public static final double ALEXEY_PRIVOLNOV_INVOICE_COST = 150.00;
     public static final String ALEXEY_PRIVOLNOV_INVOICE_PAYMENT_STATUS = "оплачен";
 
     public static final double SERGEY_VLASOV_INVOICE_COST = 100.00;
     public static final String SERGEY_VLASOV_INVOICE_PAYMENT_STATUS = "оплачен";
 
-    public static final double VLADIMIR_DOLGIN_INVOICE_COST = 150.00;
+    public static final double VLADIMIR_DOLGIN_INVOICE_COST = 50.00;
     public static final String VLADIMIR_DOLGIN_INVOICE_PAYMENT_STATUS = "оплачен";
 
     // Car diagnostics result, damage severity, number of days for service
@@ -250,6 +250,7 @@ public final class ObjectsCreator {
             MERCEDES_BENZ_DAMAGES_SEVERITY,
             MERCEDES_BENZ_DIAGNOSTICS_TIME
     );
+    public CarDiagnostics[] carDiagnostics = {bmwX6Diagnostics, toyotaLandCruiserDiagnostics, mercedesBenzDiagnostics};
 
     // Create customers
     public Customer alexeyPrivolnov = new Customer(

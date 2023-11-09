@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import static helpers.ConsoleColors.*;
 import static helpers.calcs.RepCostCalc.calcRepCost;
-import static helpers.calcs.RepTimeCalc.calcRepTime;
+import static helpers.calcs.RepTimeCalc.calculateRepTime;
 
 public final class AutoServMenu {
     CarDiagMenu carDiagMenu = new CarDiagMenu();
@@ -52,7 +52,7 @@ public final class AutoServMenu {
                 switch (option) {
                     case 0 -> exit = true;
                     case 1 -> carDiagMenu.diagServiceMenu(scanner, exit);
-                    case 2 -> calcRepTime(scanner, exit);
+                    case 2 -> calculateRepTime(scanner, exit);
                     case 3 -> calcRepCost(scanner, exit);
                     case 4 -> throw new OutOfMenuBoundsException(
                             "Введён пункт меню " + option + " свыше доступных", option - 1);

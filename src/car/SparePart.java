@@ -43,21 +43,31 @@ public class SparePart extends Car {
     }
 
     // Method calculates spare part costs depends on car manufacture year
-    public static void calcSparePartCost(Car[] cars, SparePart[] spareParts) {
+    public static SparePart[] calcSparePartCost(Car[] cars, SparePart[] spareParts) {
+        double result = 0;
+        int sparePartsDeliveryDays;
         for (Car car : cars) {
-            double tempCost = 0;
 
-            if (car.getCarManufactureYear() > 2015) {
-                for (SparePart sparePart : spareParts) {
-                    tempCost = sparePart.getSparePartCost();
+            for (SparePart sparePart : spareParts) {
 
-                    sparePart.setSparePartCost(tempCost *= 0.8);
-                    break;
+                if (car.getCarManufactureYear() > 2015) {
+                    result = sparePart.getSparePartCost();
+                    sparePart.setSparePartCost(result *= 1.5);
+
+                    if (sparePart.getDeliveryDays() > 0) {
+                        sparePartsDeliveryDays = sparePart.getDeliveryDays() * 2;
+                        sparePart.setSparePartCost(result += sparePartsDeliveryDays);
+                    }
+
                 }
+
+                break;
             }
 
             LOGGER.info(car + "\n");
         }
+
+        return spareParts;
     }
 
     public String getSparePartType() {

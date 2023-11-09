@@ -143,8 +143,7 @@ public class Car implements Washable, Paintable, BodyRepairable,
         }
     }
 
-    public void showCars(Car[] cars) {
-
+    public void showCars(Car[] cars, SparePart[] spareParts) {
         for (Car car : cars) {
             LOGGER.info(
                     ANSI_GREEN + "Марка автомобиля: " + ANSI_YELLOW
@@ -182,7 +181,6 @@ public class Car implements Washable, Paintable, BodyRepairable,
                 isElectronicsRepaired(false);
                 isModernized(true);
             }
-
 
             LOGGER.info(
                     ANSI_GREEN + "Информация о запчастях: " + ANSI_RESET

@@ -1,6 +1,7 @@
 package helpers.menus;
 
 import car.Car;
+import car.SparePart;
 import exceptions.NegativeValueException;
 import exceptions.NotNumberException;
 import exceptions.OutOfMenuBoundsException;
@@ -71,7 +72,8 @@ public final class AppMainMenu {
                     case 0 -> exit = true;
                     case 1 -> AUTO_SERV_MENU.autoServMenu(scanner, exit);
                     case 2 -> showCustomers(OBJECTS_CREATOR.customers);
-                    case 3 -> car.showCars(OBJECTS_CREATOR.cars);
+                    case 3 -> car.showCars(OBJECTS_CREATOR.cars,
+                            SparePart.calcSparePartCost(OBJECTS_CREATOR.cars, OBJECTS_CREATOR.spareParts));
                     case 4 -> calcSparePartCost(OBJECTS_CREATOR.cars, OBJECTS_CREATOR.spareParts);
                     case 5 -> showMechanics(OBJECTS_CREATOR.mechanics);
                     case 6 -> throw new OutOfMenuBoundsException(

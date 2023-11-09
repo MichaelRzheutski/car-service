@@ -52,9 +52,8 @@ public class CarDiagnostics extends Car {
         );
         LOGGER.info(
                 ANSI_GREEN + "Диагностика проводилась дней: " + ANSI_YELLOW +
-                        carDiagnostics.getDiagnosticsTime() + ANSI_RESET
+                        carDiagnostics.getDiagnosticsTime() + "\n" + ANSI_RESET
         );
-        LOGGER.info("\n");
     }
 
     public Car getCarForDiagnostics() {

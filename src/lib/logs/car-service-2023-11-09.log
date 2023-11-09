@@ -1707,3 +1707,182 @@
 [2023-11-09] [23:26:25] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:51) - [4]. Магазин автозапчастей
 [2023-11-09] [23:26:25] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:52) - [5]. Показать список автомехаников
 [2023-11-09] [23:26:25] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:53) - [0]. Выйти из программы
+[2023-11-09] [23:53:18] [main] INFO  helpers.menus.AppMainMenu.<clinit>(AppMainMenu.java:31) - [32mДобро пожаловать в автосервис '4 колеса'![0m
+[2023-11-09] [23:53:18] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:45) - [32mПожалуйста, выберите одну из предложенных операций: [0m
+[2023-11-09] [23:53:18] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:49) - [1]. Показать список услуг автосервиса
+[2023-11-09] [23:53:18] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:50) - [2]. Показать список клиентов автосервиса
+[2023-11-09] [23:53:18] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:51) - [3]. Показать список машин обслуживающихся в автосервисе
+[2023-11-09] [23:53:18] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:52) - [4]. Магазин автозапчастей
+[2023-11-09] [23:53:18] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:53) - [5]. Показать список автомехаников
+[2023-11-09] [23:53:18] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:54) - [0]. Выйти из программы
+[2023-11-09] [23:53:21] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:31) - [32mУслуги доступные у нас в автосервисе[0m
+[2023-11-09] [23:53:21] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:32) - [1]. Диагностика автомобиля
+[2023-11-09] [23:53:21] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:33) - [2]. Рассчитать время ремонта автомобиля
+[2023-11-09] [23:53:21] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:34) - [3]. Рассчитать стоимость ремонта автомобиля
+[2023-11-09] [23:53:21] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:35) - [0]. Выход
+[2023-11-09] [23:53:22] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:31) - [32mВыберите авто для диагностики[0m
+[2023-11-09] [23:53:22] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:32) - [1]. Диагностика BMW X6
+[2023-11-09] [23:53:22] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:33) - [2]. Диагностика Toyota LandCruiser
+[2023-11-09] [23:53:22] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:34) - [3]. Диагностика Mercedes Benz
+[2023-11-09] [23:53:22] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:35) - [0]. Выход
+[2023-11-09] [23:53:24] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:33) - [32mМарка авто: [33mBMW X6[0m
+[2023-11-09] [23:53:24] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:37) - [32mГод выпуска: [33m2023[0m
+[2023-11-09] [23:53:24] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:41) - [32mПробег: [33m1000 км[0m
+[2023-11-09] [23:53:24] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:45) - [32mРезультат диагностики: [33mТребуется замена моторного масла[0m
+[2023-11-09] [23:53:24] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:49) - [32mСтепень повреждений: [33mПовреждения отсутствуют[0m
+[2023-11-09] [23:53:24] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:53) - [32mДиагностика проводилась дней: [33m1[0m
+[2023-11-09] [23:53:24] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:57) - 
+
+[2023-11-09] [23:53:24] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:31) - [32mВыберите авто для диагностики[0m
+[2023-11-09] [23:53:24] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:32) - [1]. Диагностика BMW X6
+[2023-11-09] [23:53:24] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:33) - [2]. Диагностика Toyota LandCruiser
+[2023-11-09] [23:53:24] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:34) - [3]. Диагностика Mercedes Benz
+[2023-11-09] [23:53:24] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:35) - [0]. Выход
+[2023-11-09] [23:54:06] [main] INFO  helpers.menus.AppMainMenu.<clinit>(AppMainMenu.java:31) - [32mДобро пожаловать в автосервис '4 колеса'![0m
+[2023-11-09] [23:54:06] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:45) - [32mПожалуйста, выберите одну из предложенных операций: [0m
+[2023-11-09] [23:54:06] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:49) - [1]. Показать список услуг автосервиса
+[2023-11-09] [23:54:06] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:50) - [2]. Показать список клиентов автосервиса
+[2023-11-09] [23:54:06] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:51) - [3]. Показать список машин обслуживающихся в автосервисе
+[2023-11-09] [23:54:06] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:52) - [4]. Магазин автозапчастей
+[2023-11-09] [23:54:06] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:53) - [5]. Показать список автомехаников
+[2023-11-09] [23:54:06] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:54) - [0]. Выйти из программы
+[2023-11-09] [23:54:09] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:31) - [32mУслуги доступные у нас в автосервисе[0m
+[2023-11-09] [23:54:09] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:32) - [1]. Диагностика автомобиля
+[2023-11-09] [23:54:09] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:33) - [2]. Рассчитать время ремонта автомобиля
+[2023-11-09] [23:54:09] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:34) - [3]. Рассчитать стоимость ремонта автомобиля
+[2023-11-09] [23:54:09] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:35) - [0]. Выход
+[2023-11-09] [23:54:10] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:31) - [32mВыберите авто для диагностики[0m
+[2023-11-09] [23:54:10] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:32) - [1]. Диагностика BMW X6
+[2023-11-09] [23:54:10] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:33) - [2]. Диагностика Toyota LandCruiser
+[2023-11-09] [23:54:10] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:34) - [3]. Диагностика Mercedes Benz
+[2023-11-09] [23:54:10] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:35) - [0]. Выход
+[2023-11-09] [23:54:11] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:33) - [32mМарка авто: [33mBMW X6[0m
+[2023-11-09] [23:54:11] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:37) - [32mГод выпуска: [33m2023[0m
+[2023-11-09] [23:54:11] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:41) - [32mПробег: [33m1000 км[0m
+[2023-11-09] [23:54:11] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:45) - [32mРезультат диагностики: [33mТребуется замена моторного масла[0m
+[2023-11-09] [23:54:11] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:49) - [32mСтепень повреждений: [33mПовреждения отсутствуют[0m
+[2023-11-09] [23:54:11] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:53) - [32mДиагностика проводилась дней: [33m1
+[0m
+[2023-11-09] [23:54:11] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:31) - [32mВыберите авто для диагностики[0m
+[2023-11-09] [23:54:11] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:32) - [1]. Диагностика BMW X6
+[2023-11-09] [23:54:11] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:33) - [2]. Диагностика Toyota LandCruiser
+[2023-11-09] [23:54:11] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:34) - [3]. Диагностика Mercedes Benz
+[2023-11-09] [23:54:11] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:35) - [0]. Выход
+[2023-11-09] [23:54:14] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:33) - [32mМарка авто: [33mToyota Land Cruiser[0m
+[2023-11-09] [23:54:14] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:37) - [32mГод выпуска: [33m2020[0m
+[2023-11-09] [23:54:14] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:41) - [32mПробег: [33m20000 км[0m
+[2023-11-09] [23:54:14] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:45) - [32mРезультат диагностики: [33mТребуется замена шин[0m
+[2023-11-09] [23:54:14] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:49) - [32mСтепень повреждений: [33mЛёгкие повреждения[0m
+[2023-11-09] [23:54:14] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:53) - [32mДиагностика проводилась дней: [33m3
+[0m
+[2023-11-09] [23:54:14] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:31) - [32mВыберите авто для диагностики[0m
+[2023-11-09] [23:54:14] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:32) - [1]. Диагностика BMW X6
+[2023-11-09] [23:54:14] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:33) - [2]. Диагностика Toyota LandCruiser
+[2023-11-09] [23:54:14] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:34) - [3]. Диагностика Mercedes Benz
+[2023-11-09] [23:54:14] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:35) - [0]. Выход
+[2023-11-09] [23:54:17] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:33) - [32mМарка авто: [33mMercedes Benz[0m
+[2023-11-09] [23:54:17] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:37) - [32mГод выпуска: [33m2015[0m
+[2023-11-09] [23:54:17] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:41) - [32mПробег: [33m500000 км[0m
+[2023-11-09] [23:54:17] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:45) - [32mРезультат диагностики: [33mТребуется замена тормозных колодок[0m
+[2023-11-09] [23:54:17] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:49) - [32mСтепень повреждений: [33mСерьёзные повреждения[0m
+[2023-11-09] [23:54:17] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:53) - [32mДиагностика проводилась дней: [33m5
+[0m
+[2023-11-09] [23:54:17] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:31) - [32mВыберите авто для диагностики[0m
+[2023-11-09] [23:54:17] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:32) - [1]. Диагностика BMW X6
+[2023-11-09] [23:54:17] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:33) - [2]. Диагностика Toyota LandCruiser
+[2023-11-09] [23:54:17] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:34) - [3]. Диагностика Mercedes Benz
+[2023-11-09] [23:54:17] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:35) - [0]. Выход
+[2023-11-09] [23:54:19] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:31) - [32mУслуги доступные у нас в автосервисе[0m
+[2023-11-09] [23:54:19] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:32) - [1]. Диагностика автомобиля
+[2023-11-09] [23:54:19] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:33) - [2]. Рассчитать время ремонта автомобиля
+[2023-11-09] [23:54:19] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:34) - [3]. Рассчитать стоимость ремонта автомобиля
+[2023-11-09] [23:54:19] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:35) - [0]. Выход
+[2023-11-09] [23:54:20] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:45) - [32mПожалуйста, выберите одну из предложенных операций: [0m
+[2023-11-09] [23:54:20] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:49) - [1]. Показать список услуг автосервиса
+[2023-11-09] [23:54:20] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:50) - [2]. Показать список клиентов автосервиса
+[2023-11-09] [23:54:20] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:51) - [3]. Показать список машин обслуживающихся в автосервисе
+[2023-11-09] [23:54:20] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:52) - [4]. Магазин автозапчастей
+[2023-11-09] [23:54:20] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:53) - [5]. Показать список автомехаников
+[2023-11-09] [23:54:20] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:54) - [0]. Выйти из программы
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:58) - [32mИмя и фамилия клиента: [33mАлексей Привольнов[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:63) - [32mРоль: [33mКлиент[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:68) - [32mТелефон: [33m+735253458756[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:72) - [32mДата поступления авто в обслуживание: [33m10 Августа 2023[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:77) - [32mМарка авто: [33mBMW X6[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:82) - [32mУслуга: [33mЗамена моторного масла[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:88) - [32mДата оказания услуги: [33m5 Сентября 2023[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:97) - [32mСтоимость услуги: [33m50.00$[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:100) - [32mЗапчасть: [33mМоторное масло[32m в наличии на складе[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:118) - [32mСчёт на сумму: [33m300.00$[32m оплачен[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:120) - [32mМеханик: [33mВладлен Поддубицкий[32m | Квалификация: [33mмастер[32m | Доступность специалиста: [33mзанят
+[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:58) - [32mИмя и фамилия клиента: [33mСергей Власов[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:63) - [32mРоль: [33mКлиент[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:68) - [32mТелефон: [33m+735293879581[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:72) - [32mДата поступления авто в обслуживание: [33m5 Сентября 2023[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:77) - [32mМарка авто: [33mToyota Land Cruiser[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:82) - [32mУслуга: [33mЗамена шин[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:88) - [32mДата оказания услуги: [33m20 Сентября 2023[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:97) - [32mСтоимость услуги: [33m100.00$[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:107) - [32mЗапчасть: [33mКомплект шин[32m отсутствует на складе[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:118) - [32mСчёт на сумму: [33m100.00$[32m оплачен[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:120) - [32mМеханик: [33mВячеслав Маршал[32m | Квалификация: [33mспециалист[32m | Доступность специалиста: [33mсвободен
+[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:58) - [32mИмя и фамилия клиента: [33mВладимир Долгин[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:63) - [32mРоль: [33mКлиент[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:68) - [32mТелефон: [33m+735337847623[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:72) - [32mДата поступления авто в обслуживание: [33m25 Сентября 2023[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:77) - [32mМарка авто: [33mMercedes Benz[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:82) - [32mУслуга: [33mЗамена тормозов[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:88) - [32mДата оказания услуги: [33m5 Октября 2023[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:97) - [32mСтоимость услуги: [33m25.00$[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:100) - [32mЗапчасть: [33mКомплект тормозов[32m в наличии на складе[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:118) - [32mСчёт на сумму: [33m150.00$[32m оплачен[0m
+[2023-11-09] [23:54:33] [main] INFO  persons.Customer.showCustomers(Customer.java:120) - [32mМеханик: [33mЕвгений Белый[32m | Квалификация: [33mстажёр[32m | Доступность специалиста: [33mсвободен
+[0m
+[2023-11-09] [23:54:33] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:45) - [32mПожалуйста, выберите одну из предложенных операций: [0m
+[2023-11-09] [23:54:33] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:49) - [1]. Показать список услуг автосервиса
+[2023-11-09] [23:54:33] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:50) - [2]. Показать список клиентов автосервиса
+[2023-11-09] [23:54:33] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:51) - [3]. Показать список машин обслуживающихся в автосервисе
+[2023-11-09] [23:54:33] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:52) - [4]. Магазин автозапчастей
+[2023-11-09] [23:54:33] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:53) - [5]. Показать список автомехаников
+[2023-11-09] [23:54:33] [main] INFO  helpers.menus.AppMainMenu.mainMenu(AppMainMenu.java:54) - [0]. Выйти из программы
+[2023-11-09] [23:54:58] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:31) - [32mУслуги доступные у нас в автосервисе[0m
+[2023-11-09] [23:54:58] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:32) - [1]. Диагностика автомобиля
+[2023-11-09] [23:54:58] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:33) - [2]. Рассчитать время ремонта автомобиля
+[2023-11-09] [23:54:58] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:34) - [3]. Рассчитать стоимость ремонта автомобиля
+[2023-11-09] [23:54:58] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:35) - [0]. Выход
+[2023-11-09] [23:55:01] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:31) - [32mВыберите авто для диагностики[0m
+[2023-11-09] [23:55:01] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:32) - [1]. Диагностика BMW X6
+[2023-11-09] [23:55:01] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:33) - [2]. Диагностика Toyota LandCruiser
+[2023-11-09] [23:55:01] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:34) - [3]. Диагностика Mercedes Benz
+[2023-11-09] [23:55:01] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:35) - [0]. Выход
+[2023-11-09] [23:55:01] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:33) - [32mМарка авто: [33mBMW X6[0m
+[2023-11-09] [23:55:01] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:37) - [32mГод выпуска: [33m2023[0m
+[2023-11-09] [23:55:01] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:41) - [32mПробег: [33m1000 км[0m
+[2023-11-09] [23:55:01] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:45) - [32mРезультат диагностики: [33mТребуется замена моторного масла[0m
+[2023-11-09] [23:55:01] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:49) - [32mСтепень повреждений: [33mПовреждения отсутствуют[0m
+[2023-11-09] [23:55:01] [main] INFO  car.CarDiagnostics.checkCar(CarDiagnostics.java:53) - [32mДиагностика проводилась дней: [33m1
+[0m
+[2023-11-09] [23:55:01] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:31) - [32mВыберите авто для диагностики[0m
+[2023-11-09] [23:55:01] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:32) - [1]. Диагностика BMW X6
+[2023-11-09] [23:55:01] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:33) - [2]. Диагностика Toyota LandCruiser
+[2023-11-09] [23:55:01] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:34) - [3]. Диагностика Mercedes Benz
+[2023-11-09] [23:55:01] [main] INFO  helpers.menus.CarDiagMenu.diagServiceMenu(CarDiagMenu.java:35) - [0]. Выход
+[2023-11-09] [23:55:08] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:31) - [32mУслуги доступные у нас в автосервисе[0m
+[2023-11-09] [23:55:08] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:32) - [1]. Диагностика автомобиля
+[2023-11-09] [23:55:08] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:33) - [2]. Рассчитать время ремонта автомобиля
+[2023-11-09] [23:55:08] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:34) - [3]. Рассчитать стоимость ремонта автомобиля
+[2023-11-09] [23:55:08] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:35) - [0]. Выход
+[2023-11-09] [23:55:10] [main] INFO  helpers.calcs.RepTimeCalc.calcRepTime(RepTimeCalc.java:27) - [32mВыберите автомобиль[0m
+[2023-11-09] [23:55:10] [main] INFO  helpers.calcs.RepTimeCalc.calcRepTime(RepTimeCalc.java:28) - [1]. BMW X6
+[2023-11-09] [23:55:10] [main] INFO  helpers.calcs.RepTimeCalc.calcRepTime(RepTimeCalc.java:29) - [2]. Toyota Land Cruiser
+[2023-11-09] [23:55:10] [main] INFO  helpers.calcs.RepTimeCalc.calcRepTime(RepTimeCalc.java:30) - [3]. Mercedes Benz
+[2023-11-09] [23:55:10] [main] INFO  helpers.calcs.RepTimeCalc.calcRepTime(RepTimeCalc.java:31) - [0]. Выход
+[2023-11-09] [23:55:11] [main] INFO  helpers.calcs.RepTimeCalc.repTimeCalc(RepTimeCalc.java:118) - [32mОбщее время ремонта автомобиля в днях: [33m2
+[0m
+[2023-11-09] [23:55:11] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:31) - [32mУслуги доступные у нас в автосервисе[0m
+[2023-11-09] [23:55:11] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:32) - [1]. Диагностика автомобиля
+[2023-11-09] [23:55:11] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:33) - [2]. Рассчитать время ремонта автомобиля
+[2023-11-09] [23:55:11] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:34) - [3]. Рассчитать стоимость ремонта автомобиля
+[2023-11-09] [23:55:11] [main] INFO  helpers.menus.AutoServMenu.autoServMenu(AutoServMenu.java:35) - [0]. Выход
