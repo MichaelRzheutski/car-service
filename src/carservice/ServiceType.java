@@ -67,7 +67,8 @@ public final class ServiceType extends CarService {
 
     @Override
     public int hashCode() {
-        return Objects.hash(serviceType, serviceDate, serviceCost, mechanic);
+        return Objects.hash(serviceType, serviceDate,
+                serviceCost, mechanic);
     }
 
     @Override

@@ -1,23 +1,32 @@
-package helpers.calculators;
+package helpers.calcs;
 
 import helpers.ObjectsCreator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
 import static helpers.ConsoleColors.*;
 
-public final class RepairmentCostCalculator {
+public final class RepCostCalc {
     private static final ObjectsCreator OBJECTS_CREATOR = new ObjectsCreator();
 
+    // Setup Logger log4j2
+    static {
+        System.setProperty("log4j.configurationFile", "lib/log4j2.xml");
+    }
+
+    private static final Logger LOGGER = LogManager.getLogger();
+
     // Calculate car repairment cost
-    public static void calculateRepairmentCost(
+    public static void calcRepCost(
             Scanner scanner, boolean exit
     ) {
-        System.out.println(ANSI_GREEN + "Выберите автомобиль" + ANSI_RESET);
-        System.out.println("[1]. BMW X6");
-        System.out.println("[2]. Toyota Land Cruiser");
-        System.out.println("[3]. Mercedes Benz");
-        System.out.println("[0]. Выход");
+        LOGGER.info(ANSI_GREEN + "Выберите автомобиль" + ANSI_RESET);
+        LOGGER.info("[1]. BMW X6");
+        LOGGER.info("[2]. Toyota Land Cruiser");
+        LOGGER.info("[3]. Mercedes Benz");
+        LOGGER.info("[0]. Выход");
 
         int option = scanner.nextInt();
         scanner.nextLine();
@@ -25,27 +34,27 @@ public final class RepairmentCostCalculator {
         while (!exit) {
             switch (option) {
                 case 0 -> exit = true;
-                case 1 -> repairmentCostCalculator(
+                case 1 -> repCostCalc(
                         OBJECTS_CREATOR.bmwX6Diagnostics.getCarForDiagnostics().getCarManufactureYear(),
                         OBJECTS_CREATOR.bmwX6Diagnostics.getDiagnosticsResult(),
                         OBJECTS_CREATOR.bmwX6Diagnostics.getDamagesSeverity(),
                         OBJECTS_CREATOR.bmwX6Diagnostics.getDiagnosticsTime()
                 );
-                case 2 -> repairmentCostCalculator(
+                case 2 -> repCostCalc(
                         OBJECTS_CREATOR.toyotaLandCruiserDiagnostics.getCarManufactureYear(),
                         OBJECTS_CREATOR.toyotaLandCruiserDiagnostics.getDiagnosticsResult(),
                         OBJECTS_CREATOR.toyotaLandCruiserDiagnostics.getDamagesSeverity(),
                         OBJECTS_CREATOR.toyotaLandCruiserDiagnostics.getDiagnosticsTime()
                 );
-                case 3 -> repairmentCostCalculator(
+                case 3 -> repCostCalc(
                         OBJECTS_CREATOR.mercedesBenzDiagnostics.getCarManufactureYear(),
                         OBJECTS_CREATOR.mercedesBenzDiagnostics.getDiagnosticsResult(),
                         OBJECTS_CREATOR.mercedesBenzDiagnostics.getDamagesSeverity(),
                         OBJECTS_CREATOR.mercedesBenzDiagnostics.getDiagnosticsTime()
                 );
-                default -> System.out.printf(
-                        "%sНеверная операция, попробуйте ещё раз!%s\n",
-                        ANSI_RED, ANSI_RESET
+                default -> LOGGER.info(
+                        String.format("%sНеверная операция, попробуйте ещё раз!%s\n",
+                                ANSI_RED, ANSI_RESET)
                 );
             }
             break;
@@ -68,7 +77,7 @@ public final class RepairmentCostCalculator {
             case "Алексей Привольнов" -> OBJECTS_CREATOR.alexeyPrivolnovInvoice.setTotalCost(totalRepairmentCost);
             case "Сергей Власов" -> OBJECTS_CREATOR.sergeyVlasovInvoice.setTotalCost(totalRepairmentCost);
             case "Владимир Долгин" -> OBJECTS_CREATOR.vladimirDolginInvoice.setTotalCost(totalRepairmentCost);
-            default -> System.out.println("Такого клиента не существует");
+            default -> LOGGER.info("Такого клиента не существует");
         }
     }
 
@@ -108,8 +117,7 @@ public final class RepairmentCostCalculator {
                 OBJECTS_CREATOR.vladimirDolginInvoice.setTotalCost(totalRepairmentCost);
                 OBJECTS_CREATOR.mercedesBenzDiagnostics.setDiagnosticsTime(totalDiagnosticsTime);
             }
-            default -> System.out.printf(
-                    "%sТакого клиента не существует!%s\n", ANSI_RED, ANSI_RESET
+            default -> LOGGER.info(String.format("%sТакого клиента не существует!%s\n", ANSI_RED, ANSI_RESET)
             );
         }
     }
@@ -146,14 +154,13 @@ public final class RepairmentCostCalculator {
                 OBJECTS_CREATOR.vladimirDolginInvoice.setTotalCost(totalRepairmentCost);
                 OBJECTS_CREATOR.mercedesBenzDiagnostics.setDiagnosticsTime(totalDiagnosticsTime);
             }
-            default -> System.out.printf(
-                    "%sТакого клиента не существует!%s\n", ANSI_RED, ANSI_RESET
+            default -> LOGGER.info(String.format("%sТакого клиента не существует!%s\n", ANSI_RED, ANSI_RESET)
             );
         }
     }
 
     // Method calculates total cost of repairment
-    public static void repairmentCostCalculator(
+    public static void repCostCalc(
             int carManufactureYear, String diagnosticsResult,
             String damagesSeverity, int diagnosticsTime
     ) {
@@ -180,9 +187,8 @@ public final class RepairmentCostCalculator {
                 OBJECTS_CREATOR.bmwX6Diagnostics.getDiagnosticsTime()
         );
 
-        System.out.println(ANSI_GREEN + "Общая стоимость ремонта автомобиля: " + ANSI_YELLOW +
-                OBJECTS_CREATOR.alexeyPrivolnovInvoice.getTotalCost() + ANSI_RESET
+        LOGGER.info(ANSI_GREEN + "Общая стоимость ремонта автомобиля: " + ANSI_YELLOW +
+                OBJECTS_CREATOR.alexeyPrivolnovInvoice.getTotalCost() + "\n" + ANSI_RESET
         );
-        System.out.println();
     }
 }

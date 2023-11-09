@@ -1,5 +1,8 @@
 package car;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Objects;
 
 import static helpers.ConsoleColors.ANSI_RESET;
@@ -13,6 +16,13 @@ public class SparePart extends Car {
     private String isInStock;
     private double sparePartCost;
     private int deliveryDays;
+
+    // Setup Logger log4j2
+    static {
+        System.setProperty("log4j.configurationFile", "lib/log4j2.xml");
+    }
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     public SparePart(
             String sparePartType, String sparePartMake,
@@ -33,7 +43,7 @@ public class SparePart extends Car {
     }
 
     // Method calculates spare part costs depends on car manufacture year
-    public static void calculateSparePartCost(SparePart[] spareParts, Car[] cars) {
+    public static void calcSparePartCost(Car[] cars, SparePart[] spareParts) {
         for (Car car : cars) {
             double tempCost = 0;
 
@@ -42,11 +52,11 @@ public class SparePart extends Car {
                     tempCost = sparePart.getSparePartCost();
 
                     sparePart.setSparePartCost(tempCost *= 0.8);
+                    break;
                 }
             }
 
-            System.out.println(car);
-            System.out.println();
+            LOGGER.info(car + "\n");
         }
     }
 
@@ -96,12 +106,17 @@ public class SparePart extends Car {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         SparePart sparePart = (SparePart) o;
-        return Double.compare(sparePart.sparePartCost, sparePartCost) == 0 && deliveryDays == sparePart.deliveryDays && sparePartType == sparePart.sparePartType && sparePartMake == sparePart.sparePartMake && Objects.equals(isInStock, sparePart.isInStock);
+        return Double.compare(sparePart.sparePartCost, sparePartCost) == 0
+                && deliveryDays == sparePart.deliveryDays
+                && Objects.equals(sparePartType, sparePart.sparePartType)
+                && Objects.equals(sparePartMake, sparePart.sparePartMake)
+                && Objects.equals(isInStock, sparePart.isInStock);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), sparePartType, sparePartMake, isInStock, sparePartCost, deliveryDays);
+        return Objects.hash(super.hashCode(), sparePartType, sparePartMake,
+                isInStock, sparePartCost, deliveryDays);
     }
 
     @Override

@@ -24,22 +24,32 @@ public final class ObjectsCreator {
     public static final String TIRE_SET_MAKE = "Белшина";
     public static final String BRAKE_SET_MAKE = "Шустрые тормоза";
 
+    // Spare part costs
+    public static final double ENGINE_OIL_COST = 50.00;
+    public static final double TIRE_SET_COST = 200.00;
+    public static final double BRAKE_SET_COST = 100.00;
+
     // Cars
     public static final String BMW_X6 = "BMW X6";
     public static final String TOYOTA_LAND_CRUISER = "Toyota Land Cruiser";
     public static final String MERCEDES_BENZ = "Mercedes Benz";
 
-    // Cars' mileage
+    // Car mileage
     public static final int BMW_X6_MILEAGE = 1000;
     public static final int TOYOTA_LAND_CRUISER_MILEAGE = 20000;
     public static final int MERCEDES_BENZ_MILEAGE = 500000;
 
-    // Cars' type of service
+    // Car manufacture year
+    public static final int BMW_X6_MANUFACTURE_YEAR = 2023;
+    public static final int TOYOTA_LAND_CRUISER_MANUFACTURE_YEAR = 2020;
+    public static final int MERCEDES_BENZ_MANUFACTURE_YEAR = 2015;
+
+    // Car type of service
     public static final String SERVICE_TYPE_OIL_CHANGE = "Замена моторного масла";
     public static final String SERVICE_TYRE_ROTATION = "Замена шин";
     public static final String SERVICE_BRAKES_CHANGE = "Замена тормозов";
 
-    // Cars' date and cost of service
+    // Car date and cost of service
     public static final String OIL_CHANGE_SERVICE_DATE = "5 Сентября 2023";
     public static final double OIL_CHANGE_SERVICE_COST = 50.00;
     public static final String TYRE_ROTATION_SERVICE_DATE = "20 Сентября 2023";
@@ -112,19 +122,19 @@ public final class ObjectsCreator {
             ENGINE_OIL,
             ENGINE_OIL_MAKE,
             IS_IN_STOCK,
-            50.00
+            ENGINE_OIL_COST
     );
     public SparePart tiresSpare = new SparePart(
             TIRE_SET,
             TIRE_SET_MAKE,
             IS_NOT_IN_STOCK,
-            200.00
+            TIRE_SET_COST
     );
     public SparePart brakesSpare = new SparePart(
             BRAKE_SET,
             BRAKE_SET_MAKE,
             IS_IN_STOCK,
-            100.00
+            BRAKE_SET_COST
     );
     public SparePart[] spareParts = {oilSpare, tiresSpare, brakesSpare};
 
@@ -152,19 +162,19 @@ public final class ObjectsCreator {
     // Create cars
     public Car bmwX6 = new Car(
             BMW_X6,
-            2023,
+            BMW_X6_MANUFACTURE_YEAR,
             BMW_X6_MILEAGE,
             new SparePart[]{oilSpare, tiresSpare, brakesSpare}
     );
     public Car toyotaLandCruiser = new Car(
             TOYOTA_LAND_CRUISER,
-            2020,
+            TOYOTA_LAND_CRUISER_MANUFACTURE_YEAR,
             TOYOTA_LAND_CRUISER_MILEAGE,
             new SparePart[]{oilSpare, tiresSpare}
     );
     public Car mercedesBenz = new Car(
             MERCEDES_BENZ,
-            2015,
+            MERCEDES_BENZ_MANUFACTURE_YEAR,
             MERCEDES_BENZ_MILEAGE,
             new SparePart[]{oilSpare}
     );
@@ -249,9 +259,9 @@ public final class ObjectsCreator {
             ALEXEY_PRIVOLNOV_PHONE,
             bmwX6.getCarMake(),
             alexeyPrivolnovService,
-            vladlenPoddubitsky,
             oilSpare,
-            alexeyPrivolnovInvoice
+            alexeyPrivolnovInvoice,
+            vladlenPoddubitsky
     );
 
     public Customer sergeyVlasov = new Customer(
@@ -261,9 +271,9 @@ public final class ObjectsCreator {
             SERGEY_VLASOV_PHONE,
             toyotaLandCruiser.getCarMake(),
             sergeyVlasovService,
-            vyacheslavMarshal,
             tiresSpare,
-            sergeyVlasovInvoice
+            sergeyVlasovInvoice,
+            vyacheslavMarshal
     );
 
     public Customer vladimirDolgin = new Customer(
@@ -273,9 +283,9 @@ public final class ObjectsCreator {
             VLADIMIR_DOLGIN_PHONE,
             mercedesBenz.getCarMake(),
             vladimirDolginService,
-            evgenyBely,
             brakesSpare,
-            vladimirDolginInvoice
+            vladimirDolginInvoice,
+            evgenyBely
     );
     public Customer[] customers = {alexeyPrivolnov, sergeyVlasov, vladimirDolgin};
 }

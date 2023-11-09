@@ -1,5 +1,8 @@
 package car;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Objects;
 
 import static helpers.ConsoleColors.*;
@@ -9,6 +12,13 @@ public class CarDiagnostics extends Car {
     private String diagnosticsResult;
     private String damagesSeverity;
     private int diagnosticsTime;
+
+    // Setup Logger log4j2
+    static {
+        System.setProperty("log4j.configurationFile", "lib/log4j2.xml");
+    }
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     public CarDiagnostics(
             Car carForDiagnostics, String diagnosticsResult,
@@ -20,31 +30,31 @@ public class CarDiagnostics extends Car {
     }
 
     public static void checkCar(CarDiagnostics carDiagnostics) {
-        System.out.println(
+        LOGGER.info(
                 ANSI_GREEN + "Марка авто: " + ANSI_YELLOW +
                         carDiagnostics.getCarForDiagnostics().getCarMake() + ANSI_RESET
         );
-        System.out.println(
+        LOGGER.info(
                 ANSI_GREEN + "Год выпуска: " + ANSI_YELLOW +
                         carDiagnostics.getCarForDiagnostics().getCarManufactureYear() + ANSI_RESET
         );
-        System.out.println(
+        LOGGER.info(
                 ANSI_GREEN + "Пробег: " + ANSI_YELLOW +
                         carDiagnostics.getCarForDiagnostics().getMileage() + " км" + ANSI_RESET
         );
-        System.out.println(
+        LOGGER.info(
                 ANSI_GREEN + "Результат диагностики: " + ANSI_YELLOW +
                         carDiagnostics.getDiagnosticsResult() + ANSI_RESET
         );
-        System.out.println(
+        LOGGER.info(
                 ANSI_GREEN + "Степень повреждений: " + ANSI_YELLOW +
                         carDiagnostics.getDamagesSeverity() + ANSI_RESET
         );
-        System.out.println(
+        LOGGER.info(
                 ANSI_GREEN + "Диагностика проводилась дней: " + ANSI_YELLOW +
                         carDiagnostics.getDiagnosticsTime() + ANSI_RESET
         );
-        System.out.println();
+        LOGGER.info("\n");
     }
 
     public Car getCarForDiagnostics() {
