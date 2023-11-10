@@ -1,5 +1,5 @@
 package interfaces;
 
 public interface Washable {
-    void isWashed(boolean carWash);
+    String isWashed(boolean carWash);
 }
