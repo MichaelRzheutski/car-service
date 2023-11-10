@@ -54,10 +54,10 @@ public class SparePart extends Car {
                     result = sparePart.getSparePartCost();
                     sparePart.setSparePartCost(result *= 1.5);
 
-                    if (sparePart.getDeliveryDays() > 0) {
-                        sparePartsDeliveryDays = sparePart.getDeliveryDays() * 2;
-                        sparePart.setSparePartCost(result += sparePartsDeliveryDays);
-                    }
+//                    if (sparePart.getDeliveryDays() > 0) {
+//                        sparePartsDeliveryDays = sparePart.getDeliveryDays() * 2;
+//                        sparePart.setSparePartCost(result += sparePartsDeliveryDays);
+//                    }
 
                 }
 
