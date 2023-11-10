@@ -118,7 +118,7 @@ public final class Customer extends Person {
             LOGGER.info(String.format(invoiceFormat.toString() + ANSI_RESET));
 
             LOGGER.info(
-                    ANSI_GREEN + "Механик: " + ANSI_YELLOW
+                    ANSI_GREEN + "Механик выполнивший работу: " + ANSI_YELLOW
                             + customer.getMechanic().getName() + " "
                             + customer.getMechanic().getSurname() + ANSI_GREEN + " | Квалификация: " + ANSI_YELLOW
                             + customer.getMechanic().getExpertise() + ANSI_GREEN + " | Доступность специалиста: "
