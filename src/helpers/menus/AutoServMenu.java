@@ -28,7 +28,7 @@ public final class AutoServMenu {
 
         try {
             while (!exit) {
-                LOGGER.info(String.format("%sУслуги доступные у нас в автосервисе%s", ANSI_GREEN, ANSI_RESET));
+                LOGGER.info(String.format("%sУслуги доступные у нас в автосервисе:%s", ANSI_GREEN, ANSI_RESET));
                 LOGGER.info("[1]. Диагностика автомобиля");
                 LOGGER.info("[2]. Рассчитать время ремонта автомобиля");
                 LOGGER.info("[3]. Рассчитать стоимость ремонта автомобиля");
