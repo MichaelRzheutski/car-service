@@ -28,7 +28,7 @@ public final class CarDiagMenu {
 
         try {
             while (!exit) {
-                LOGGER.info(String.format("%sВыберите авто для диагностики%s", ANSI_GREEN, ANSI_RESET));
+                LOGGER.info(String.format("%sВыберите авто для диагностики:%s", ANSI_GREEN, ANSI_RESET));
                 LOGGER.info("[1]. Диагностика BMW X6");
                 LOGGER.info("[2]. Диагностика Toyota LandCruiser");
                 LOGGER.info("[3]. Диагностика Mercedes Benz");
