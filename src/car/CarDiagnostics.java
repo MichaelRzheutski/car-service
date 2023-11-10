@@ -29,7 +29,7 @@ public class CarDiagnostics extends Car {
         this.diagnosticsTime = diagnosticsTime;
     }
 
-    public static void checkCar(CarDiagnostics carDiagnostics) {
+    public static CarDiagnostics checkCar(CarDiagnostics carDiagnostics) {
         LOGGER.info(
                 ANSI_GREEN + "Марка авто: " + ANSI_YELLOW +
                         carDiagnostics.getCarForDiagnostics().getCarMake() + ANSI_RESET
@@ -54,6 +54,8 @@ public class CarDiagnostics extends Car {
                 ANSI_GREEN + "Диагностика проводилась дней: " + ANSI_YELLOW +
                         carDiagnostics.getDiagnosticsTime() + "\n" + ANSI_RESET
         );
+
+        return carDiagnostics;
     }
 
     public Car getCarForDiagnostics() {

@@ -37,10 +37,12 @@ public class SparePart extends Car {
         }
     }
 
-    public static void showSpareParts(Car[] cars, SparePart[] spareParts) {
+    public static Car[] showSpareParts(Car[] cars, SparePart[] spareParts) {
         for (Car car : cars) {
             LOGGER.info(car + "\n");
         }
+
+        return cars;
     }
 
     // Method generates random delivery days

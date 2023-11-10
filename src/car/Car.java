@@ -148,7 +148,8 @@ public class Car implements Washable, Paintable, BodyRepairable,
         return result;
     }
 
-    public void showCars(Car[] cars, SparePart[] spareParts) {
+    public final Car[] showCars(Car[] cars, SparePart[] spareParts) {
+
         for (Car car : cars) {
             LOGGER.info(
                     ANSI_GREEN + "Марка автомобиля: " + ANSI_YELLOW
@@ -192,6 +193,8 @@ public class Car implements Washable, Paintable, BodyRepairable,
                             + Arrays.toString(car.getSpareParts()) + "\n" + ANSI_RESET
             );
         }
+
+        return cars;
     }
 
     public String getCarMake() {

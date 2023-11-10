@@ -36,7 +36,7 @@ public final class AppMainMenu {
 
     Car car = new Car();
 
-    public final void mainMenu() throws NotNumberException {
+    public void mainMenu() throws NotNumberException {
         try (Scanner scanner = new Scanner(System.in)) {
             // Main menu
             boolean exit = false;
