@@ -59,88 +59,93 @@ public class Car implements Washable, Paintable, BodyRepairable,
     }
 
     @Override
-    public void isWashed(boolean carWash) {
+    public String isWashed(boolean carWash) {
+        String result;
+
         if (carWash) {
             setCarWash("Машина помыта");
-            LOGGER.info(
-                    ANSI_GREEN + "Внешний вид машины: " + ANSI_RESET
-                            + getCarWash() + ANSI_RESET
-            );
         } else {
             setCarWash("Машина не помыта");
-            LOGGER.info(
-                    ANSI_GREEN + "Внешний вид машины: " + ANSI_RESET
-                            + getCarWash() + ANSI_RESET
-            );
         }
+        result = getCarWash();
+        LOGGER.info(
+                ANSI_GREEN + "Внешний вид машины: " + ANSI_RESET
+                        + getCarWash() + ANSI_RESET
+        );
+
+        return result;
     }
 
     @Override
-    public void isPainted(boolean carPaint) {
+    public String isPainted(boolean carPaint) {
+        String result;
+
         if (carPaint) {
-            setCarWash("Машина перекрашена");
-            LOGGER.info(
-                    ANSI_GREEN + "Покраска кузова: " + ANSI_RESET
-                            + getCarWash() + ANSI_RESET
-            );
+            setCarPaint("Машина перекрашена");
         } else {
-            setCarWash("Машина не перекрашивалась");
-            LOGGER.info(
-                    ANSI_GREEN + "Покраска кузова: " + ANSI_RESET
-                            + getCarWash() + ANSI_RESET
-            );
+            setCarPaint("Машина не перекрашивалась");
         }
+        result = getCarPaint();
+        LOGGER.info(
+                ANSI_GREEN + "Покраска кузова: " + ANSI_RESET
+                        + getCarPaint() + ANSI_RESET
+        );
+
+        return result;
     }
 
     @Override
-    public void isBodyRepaired(boolean bodyRepairment) {
+    public String isBodyRepaired(boolean bodyRepairment) {
+        String result;
+
         if (bodyRepairment) {
-            setCarWash("Проводился ремонт кузова");
-            LOGGER.info(
-                    ANSI_GREEN + "Состояние кузова: " + ANSI_RESET
-                            + getCarWash() + ANSI_RESET
-            );
+            setBodyRepairment("Проводился ремонт кузова");
         } else {
-            setCarWash("Ремонт кузова не проводился");
-            LOGGER.info(
-                    ANSI_GREEN + "Состояние кузова: " + ANSI_RESET
-                            + getCarWash() + ANSI_RESET
-            );
+            setBodyRepairment("Ремонт кузова не проводился");
         }
+        result = getBodyRepairment();
+        LOGGER.info(
+                ANSI_GREEN + "Состояние кузова: " + ANSI_RESET
+                        + getBodyRepairment() + ANSI_RESET
+        );
+
+        return result;
     }
 
     @Override
-    public void isElectronicsRepaired(boolean electronicsRepairment) {
+    public String isElectronicsRepaired(boolean electronicsRepairment) {
+        String result;
+
         if (electronicsRepairment) {
-            setCarWash("Проведён ремонт и замена электроники");
-            LOGGER.info(
-                    ANSI_GREEN + "Состояние электроники: " + ANSI_RESET
-                            + getCarWash() + ANSI_RESET
-            );
+            setElectronicsRepairment("Проведён ремонт и замена электроники");
         } else {
-            setCarWash("Ремонта и замены электроники не проводилось");
-            LOGGER.info(
-                    ANSI_GREEN + "Состояние электроники: " + ANSI_RESET
-                            + getCarWash() + ANSI_RESET
-            );
+            setElectronicsRepairment("Ремонта и замены электроники не проводилось");
         }
+        result = getElectronicsRepairment();
+        LOGGER.info(
+                ANSI_GREEN + "Состояние электроники: " + ANSI_RESET
+                        + getElectronicsRepairment() + ANSI_RESET
+        );
+
+        return result;
     }
 
     @Override
-    public void isModernized(boolean modernization) {
+    public String isModernized(boolean modernization) {
+        String result;
+
         if (modernization) {
-            setCarWash("Автомобиль модернизирован");
-            LOGGER.info(
-                    ANSI_GREEN + "Модернизация: " + ANSI_RESET
-                            + getCarWash() + ANSI_RESET
-            );
+            setModernization("Автомобиль модернизирован");
         } else {
-            setCarWash("Модернизация не проводилась");
-            LOGGER.info(
-                    ANSI_GREEN + "Модернизация: " + ANSI_RESET
-                            + getCarWash() + ANSI_RESET
-            );
+            setModernization("Модернизация не проводилась");
         }
+        result = getModernization();
+        LOGGER.info(
+                ANSI_GREEN + "Модернизация: " + ANSI_RESET
+                        + getModernization() + ANSI_RESET
+        );
+
+        return result;
     }
 
     public void showCars(Car[] cars, SparePart[] spareParts) {
