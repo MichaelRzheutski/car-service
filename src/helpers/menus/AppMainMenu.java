@@ -74,7 +74,8 @@ public final class AppMainMenu {
                     case 2 -> showCustomers(OBJECTS_CREATOR.customers);
                     case 3 -> car.showCars(OBJECTS_CREATOR.cars,
                             SparePart.calcSparePartCost(OBJECTS_CREATOR.cars, OBJECTS_CREATOR.spareParts));
-                    case 4 -> calcSparePartCost(OBJECTS_CREATOR.cars, OBJECTS_CREATOR.spareParts);
+                    case 4 -> SparePart.showSpareParts(OBJECTS_CREATOR.cars,
+                            calcSparePartCost(OBJECTS_CREATOR.cars, OBJECTS_CREATOR.spareParts));
                     case 5 -> showMechanics(OBJECTS_CREATOR.mechanics);
                     case 6 -> throw new OutOfMenuBoundsException(
                             "Введён пункт меню " + option + " свыше доступных", option - 1);
@@ -85,6 +86,7 @@ public final class AppMainMenu {
                     );
                 }
             }
+
         } catch (NegativeValueException e) {
             LOGGER.debug(ANSI_RED +
                     "Ой, ошибочка! " + e + " " + e.getNumber() + "."
