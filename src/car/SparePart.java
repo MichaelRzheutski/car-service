@@ -37,6 +37,12 @@ public class SparePart extends Car {
         }
     }
 
+    public static void showSpareParts(Car[] cars, SparePart[] spareParts) {
+        for (Car car : cars) {
+            LOGGER.info(car + "\n");
+        }
+    }
+
     // Method generates random delivery days
     public static int generateDeliveryDays() {
         return (int) (Math.random() * 7) + 1;
@@ -54,17 +60,16 @@ public class SparePart extends Car {
                     result = sparePart.getSparePartCost();
                     sparePart.setSparePartCost(result *= 1.5);
 
-//                    if (sparePart.getDeliveryDays() > 0) {
-//                        sparePartsDeliveryDays = sparePart.getDeliveryDays() * 2;
-//                        sparePart.setSparePartCost(result += sparePartsDeliveryDays);
-//                    }
+                    if (sparePart.getDeliveryDays() > 0) {
+                        sparePartsDeliveryDays = sparePart.getDeliveryDays() * 2;
+                        sparePart.setSparePartCost(result += sparePartsDeliveryDays);
+                    }
 
                 }
 
                 break;
             }
 
-            LOGGER.info(car + "\n");
         }
 
         return spareParts;
