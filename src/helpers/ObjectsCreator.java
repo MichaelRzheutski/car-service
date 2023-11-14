@@ -6,12 +6,10 @@ import car.SparePart;
 import carservice.Appointment;
 import carservice.Invoice;
 import carservice.ServiceType;
-import carservice.SparePartsShop;
 import customlinkedlist.CustomLinkedList;
 import persons.Customer;
 import persons.Mechanic;
 
-import java.math.BigDecimal;
 import java.util.*;
 
 public final class ObjectsCreator {
@@ -29,9 +27,9 @@ public final class ObjectsCreator {
     public static final String BRAKE_SET_MAKE = "Шустрые тормоза";
 
     // Spare part costs
-    public static final BigDecimal ENGINE_OIL_COST = new BigDecimal("50.00");
-    public static final BigDecimal TIRE_SET_COST = new BigDecimal("200.00");
-    public static final BigDecimal BRAKE_SET_COST = new BigDecimal("100.00");
+    public static final double ENGINE_OIL_COST = 50.00;
+    public static final double TIRE_SET_COST = 200.00;
+    public static final double BRAKE_SET_COST = 100.00;
 
     // Cars
     public static final String BMW_X6 = "BMW X6";
@@ -55,11 +53,11 @@ public final class ObjectsCreator {
 
     // Car date and cost of service
     public static final String OIL_CHANGE_SERVICE_DATE = "5 Сентября 2023";
-    public static final BigDecimal OIL_CHANGE_SERVICE_COST = new BigDecimal("50.00");
+    public static final double OIL_CHANGE_SERVICE_COST = 50.00;
     public static final String TYRE_ROTATION_SERVICE_DATE = "20 Сентября 2023";
-    public static final BigDecimal TYRE_ROTATION_SERVICE_COST = new BigDecimal("100.00");
+    public static final double TYRE_ROTATION_SERVICE_COST = 100.00;
     public static final String BRACKES_CHANGE_SERVICE_DATE = "5 Октября 2023";
-    public static final BigDecimal BRACKES_CHANGE_SERVICE_COST = new BigDecimal("25.00");
+    public static final double BRACKES_CHANGE_SERVICE_COST = 25.00;
 
     // Mechanics of autoservice
     public static final String MECHANIC_VLADLEN_PODDUBITSKY_NAME = "Владлен";
@@ -83,13 +81,13 @@ public final class ObjectsCreator {
     public static final String VLADIMIR_DOLGIN_APPOINTMENT_DATE = "25 Сентября 2023";
 
     // Costs and payment statuses of invoices
-    public static final BigDecimal ALEXEY_PRIVOLNOV_INVOICE_COST = new BigDecimal("150.00");
+    public static final double ALEXEY_PRIVOLNOV_INVOICE_COST = 150.00;
     public static final String ALEXEY_PRIVOLNOV_INVOICE_PAYMENT_STATUS = "оплачен";
 
-    public static final BigDecimal SERGEY_VLASOV_INVOICE_COST = new BigDecimal("100.00");
+    public static final double SERGEY_VLASOV_INVOICE_COST = 100.00;
     public static final String SERGEY_VLASOV_INVOICE_PAYMENT_STATUS = "оплачен";
 
-    public static final BigDecimal VLADIMIR_DOLGIN_INVOICE_COST = new BigDecimal("50.00");
+    public static final double VLADIMIR_DOLGIN_INVOICE_COST = 50.00;
     public static final String VLADIMIR_DOLGIN_INVOICE_PAYMENT_STATUS = "оплачен";
 
     // Car diagnostics result, damage severity, number of days for service
@@ -117,8 +115,6 @@ public final class ObjectsCreator {
     public static final String VLADIMIR_DOLGIN_NAME = "Владимир";
     public static final String VLADIMIR_DOLGIN_SURNAME = "Долгин";
     public static final String VLADIMIR_DOLGIN_PHONE = "+735337847623";
-
-    List<String> dsfdsf = new LinkedList<>();
 
     public ObjectsCreator() {
     }

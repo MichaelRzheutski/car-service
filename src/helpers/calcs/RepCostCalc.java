@@ -5,14 +5,11 @@ import helpers.ObjectsCreator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.Scanner;
 
 import static helpers.ConsoleColors.*;
 
-// TODO: ПОЛНОСТЬЮ ПЕРЕПИСАТЬ КАЛЬКУЛЯТОР
 public final class RepCostCalc {
     private static final ObjectsCreator OBJECTS_CREATOR = new ObjectsCreator();
 
@@ -25,7 +22,7 @@ public final class RepCostCalc {
 
 
     // Calculate car repairment cost
-    public static BigDecimal calcRepCost(
+    public static double calcRepCost(
             Scanner scanner, boolean isExit, List<Invoice> invoiceList
     ) {
         LOGGER.info(ANSI_GREEN + "Выберите автомобиль" + ANSI_RESET);
@@ -37,21 +34,20 @@ public final class RepCostCalc {
         int option = scanner.nextInt();
         scanner.nextLine();
 
-        // TODO: ДОДЕЛАТЬ РЕСЕТ К НАЧАЛЬНЫМ ЗНАЧЕНИЯМ
         // Reset spare invoice costs to initial values
-        final BigDecimal alexeyPrivolnovInitialInvoice = invoiceList.get(0).getTotalCost();
+        final double alexeyPrivolnovInitialInvoice = invoiceList.get(0).getTotalCost();
         invoiceList.get(0).setTotalCost(alexeyPrivolnovInitialInvoice);
 
-        final BigDecimal sergeyVlasovInitialInvoice = invoiceList.get(1).getTotalCost();
+        final double sergeyVlasovInitialInvoice = invoiceList.get(1).getTotalCost();
         invoiceList.get(1).setTotalCost(sergeyVlasovInitialInvoice);
 
-        final BigDecimal vladimirDolginInitialInvoice = invoiceList.get(2).getTotalCost();
+        final double vladimirDolginInitialInvoice = invoiceList.get(2).getTotalCost();
         invoiceList.get(2).setTotalCost(vladimirDolginInitialInvoice);
 
-        BigDecimal alexeyPrivolnovInvoice;
-        BigDecimal sergeyVlasovInvoice;
-        BigDecimal vladimirDolginInvoice;
-        BigDecimal result = null;
+        double alexeyPrivolnovInvoice;
+        double sergeyVlasovInvoice;
+        double vladimirDolginInvoice;
+        double result = 0;
 
         while (!isExit) {
             switch (option) {
@@ -112,16 +108,14 @@ public final class RepCostCalc {
 
     // Method checks car manufacture year and
     // returns repairment cost depends on year
-    public static BigDecimal checkCarManufactureYear(
-            int carManufactureYear, BigDecimal repairmentCost,
+    public static double checkCarManufactureYear(
+            int carManufactureYear, double repairmentCost,
             String name, String surname
     ) {
         String nameAndSurname = name + " " + surname;
 
         if (carManufactureYear >= 2021 && carManufactureYear < 2025) {
-            repairmentCost = repairmentCost.multiply(
-                    BigDecimal.valueOf(1.5).setScale(2, RoundingMode.UNNECESSARY)
-            );
+            repairmentCost = repairmentCost * 1.5;
         }
 
         switch (nameAndSurname) {
@@ -139,30 +133,24 @@ public final class RepCostCalc {
 
     // Method checks diagnostics result and adds additional price to repairment cost
     // depends on diagnostics result
-    public static BigDecimal checkDiagnosticsResult(
-            String diagnosticsResult, BigDecimal repairmentCost,
+    public static double checkDiagnosticsResult(
+            String diagnosticsResult, double repairmentCost,
             String name, String surname, int diagnosticsTime
     ) {
         int totalDiagnosticsTime = diagnosticsTime;
         String nameAndSurname = name + " " + surname;
 
         if (diagnosticsResult.equals("Требуется замена моторного масла")) {
-            repairmentCost = repairmentCost.add(
-                    BigDecimal.valueOf(20.00).setScale(2, RoundingMode.UNNECESSARY)
-            );
+            repairmentCost = repairmentCost + 20.00;
         }
 
         if (diagnosticsResult.equals("Требуется замена шин")) {
-            repairmentCost = repairmentCost.add(
-                    BigDecimal.valueOf(50.00).setScale(2, RoundingMode.UNNECESSARY)
-            );
+            repairmentCost = repairmentCost + 50.00;
             totalDiagnosticsTime += 1;
         }
 
         if (diagnosticsResult.equals("Требуется замена тормозных колодок")) {
-            repairmentCost = repairmentCost.add(
-                    BigDecimal.valueOf(80.00).setScale(2, RoundingMode.UNNECESSARY)
-            );
+            repairmentCost = repairmentCost + 80.00;
             totalDiagnosticsTime += 2;
         }
 
@@ -189,24 +177,20 @@ public final class RepCostCalc {
     }
 
     // Method checks car damages severity
-    public static BigDecimal checkDamagesSeverity(
-            String damagesSeverity, BigDecimal repairmentCost,
+    public static double checkDamagesSeverity(
+            String damagesSeverity, double repairmentCost,
             String name, String surname, int diagnosticsTime
     ) {
         int totalDiagnosticsTime = diagnosticsTime;
         String nameAndSurname = name + " " + surname;
 
         if (damagesSeverity.equals("Лёгкие повреждения")) {
-            repairmentCost = repairmentCost.add(
-                    BigDecimal.valueOf(30.00).setScale(2, RoundingMode.UNNECESSARY)
-            );
+            repairmentCost = repairmentCost + 30.00;
             totalDiagnosticsTime += 1;
         }
 
         if (damagesSeverity.equals("Серьёзные повреждения")) {
-            repairmentCost = repairmentCost.add(
-                    BigDecimal.valueOf(50.00).setScale(2, RoundingMode.UNNECESSARY)
-            );
+            repairmentCost = repairmentCost + 50.00;
             totalDiagnosticsTime += 2;
         }
 
@@ -232,11 +216,11 @@ public final class RepCostCalc {
     }
 
     // Method calculates total cost of repairment
-    public static BigDecimal repCostCalculator(
+    public static double repCostCalculator(
             int carManufactureYear, String diagnosticsResult,
             String damagesSeverity, int diagnosticsTime
     ) {
-        BigDecimal totalRepairmentCost;
+        double totalRepairmentCost;
 
         totalRepairmentCost = checkCarManufactureYear(
                 OBJECTS_CREATOR.bmwX6.getCarManufactureYear(),
@@ -260,8 +244,6 @@ public final class RepCostCalc {
                 OBJECTS_CREATOR.alexeyPrivolnov.getSurname(),
                 OBJECTS_CREATOR.bmwX6Diagnostics.getDiagnosticsTime()
         );
-
-        totalRepairmentCost = totalRepairmentCost.setScale(2, RoundingMode.UNNECESSARY);
 
         return totalRepairmentCost;
     }

@@ -1,12 +1,9 @@
 package car;
 
-import customlinkedlist.CustomLinkedList;
 import helpers.ObjectsCreator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,7 +16,7 @@ public class SparePart extends Car {
     private String sparePartType;
     private String sparePartMake;
     private String isInStock;
-    private BigDecimal sparePartCost;
+    private double sparePartCost;
     private int deliveryDays;
 
     // Setup Logger log4j2
@@ -33,7 +30,7 @@ public class SparePart extends Car {
 
     public SparePart(
             String sparePartType, String sparePartMake,
-            String isInStock, BigDecimal sparePartCost
+            String isInStock, double sparePartCost
     ) {
         this.sparePartType = sparePartType;
         this.sparePartMake = sparePartMake;
@@ -58,19 +55,19 @@ public class SparePart extends Car {
     }
 
     // Method calculates spare part costs depends on car manufacture year
-    public static List<SparePart> calcSparePartCost(List<Car> cars, CustomLinkedList<SparePart> spareParts) {
-        BigDecimal result;
+    public static List<SparePart> calcSparePartCost(List<Car> cars, List<SparePart> spareParts) {
+        double result;
         int sparePartsDeliveryDays;
 
         // Reset spare part costs to initial values
-        final BigDecimal firstSparePartInitialCost = spareParts.get(0).getSparePartCost();
-        spareParts.get(0).setSparePartCost(firstSparePartInitialCost);
+        final double oilInitialCost = spareParts.get(0).getSparePartCost();
+        spareParts.get(0).setSparePartCost(50.00);
 
-        final BigDecimal secondSparePartInitialCost = spareParts.get(0).getSparePartCost();
-        spareParts.get(0).setSparePartCost(secondSparePartInitialCost);
+        final double tyreSetInitialCost = spareParts.get(1).getSparePartCost();
+        spareParts.get(1).setSparePartCost(200.00);
 
-        final BigDecimal thirdSparePartInitialCost = spareParts.get(0).getSparePartCost();
-        spareParts.get(0).setSparePartCost(thirdSparePartInitialCost);
+        final double brakeSetInitialCost = spareParts.get(2).getSparePartCost();
+        spareParts.get(2).setSparePartCost(100.00);
 
         // Calculate spare part costs
         for (Car car : cars) {
@@ -79,23 +76,16 @@ public class SparePart extends Car {
 
                 if (car.getCarManufactureYear() > 2015) {
                     result = sparePart.getSparePartCost();
-                    sparePart.setSparePartCost(result = result.multiply(
-                            BigDecimal.valueOf(1.5).setScale(2, RoundingMode.UNNECESSARY))
-                    );
+                    sparePart.setSparePartCost(result *= 1.5);
 
                     if (sparePart.getDeliveryDays() > 0) {
                         sparePartsDeliveryDays = sparePart.getDeliveryDays() * 2;
-                        sparePart.setSparePartCost(result = result.add(
-                                BigDecimal.valueOf(sparePartsDeliveryDays)
-                                        .setScale(2, RoundingMode.UNNECESSARY))
-                        );
+                        sparePart.setSparePartCost(result += sparePartsDeliveryDays);
                     }
 
                 }
-
-                break;
             }
-
+            break;
         }
 
         return spareParts;
@@ -125,11 +115,11 @@ public class SparePart extends Car {
         isInStock = inStock;
     }
 
-    public BigDecimal getSparePartCost() {
+    public double getSparePartCost() {
         return sparePartCost;
     }
 
-    public void setSparePartCost(BigDecimal sparePartCost) {
+    public void setSparePartCost(double sparePartCost) {
         this.sparePartCost = sparePartCost;
     }
 
