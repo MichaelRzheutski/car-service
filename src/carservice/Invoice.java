@@ -1,22 +1,23 @@
 package carservice;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 // Invoice: Represents an invoice for a customer with total cost and payment status
 public final class Invoice extends CarService {
-    private double totalCost;
+    private BigDecimal totalCost;
     private String paymentStatus;
 
-    public Invoice(double totalCost, String paymentStatus) {
+    public Invoice(BigDecimal totalCost, String paymentStatus) {
         this.totalCost = totalCost;
         this.paymentStatus = paymentStatus;
     }
 
-    public double getTotalCost() {
+    public BigDecimal getTotalCost() {
         return totalCost;
     }
 
-    public void setTotalCost(double totalCost) {
+    public void setTotalCost(BigDecimal totalCost) {
         this.totalCost = totalCost;
     }
 
@@ -33,7 +34,7 @@ public final class Invoice extends CarService {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Invoice invoice = (Invoice) o;
-        return Double.compare(invoice.totalCost, totalCost) == 0
+        return Objects.equals(totalCost, invoice.totalCost)
                 && Objects.equals(paymentStatus, invoice.paymentStatus);
     }
 

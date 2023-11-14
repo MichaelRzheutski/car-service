@@ -1,5 +1,5 @@
 package interfaces;
 
 public interface Modernizable {
-    String isModernized(boolean modernization);
+    String isCarModernized(boolean isCarModernized);
 }

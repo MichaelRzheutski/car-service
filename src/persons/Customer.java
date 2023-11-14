@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Formatter;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Set;
 
 import static helpers.ConsoleColors.*;
 
@@ -52,7 +53,7 @@ public final class Customer extends Person {
     }
 
     // Method shows whole info about customers
-    public static void showCustomers(Customer[] customers) {
+    public static void showCustomers(Set<Customer> customers) {
 
         for (Customer customer : customers) {
             LOGGER.info(
@@ -120,9 +121,12 @@ public final class Customer extends Person {
             LOGGER.info(
                     ANSI_GREEN + "Механик выполнивший работу: " + ANSI_YELLOW
                             + customer.getMechanic().getName() + " "
-                            + customer.getMechanic().getSurname() + ANSI_GREEN + " | Квалификация: " + ANSI_YELLOW
-                            + customer.getMechanic().getExpertise() + ANSI_GREEN + " | Доступность специалиста: "
-                            + ANSI_YELLOW + customer.getMechanic().getAvailability() + "\n" + ANSI_RESET
+                            + customer.getMechanic().getSurname() + ANSI_GREEN
+                            + " | Квалификация: " + ANSI_YELLOW
+                            + customer.getMechanic().getExpertise() + ANSI_GREEN
+                            + " | Доступность специалиста: "
+                            + ANSI_YELLOW + customer.getMechanic().getAvailability()
+                            + "\n" + ANSI_RESET
             );
         }
     }
@@ -205,4 +209,5 @@ public final class Customer extends Person {
                 carName, serviceType, sparePart, invoice, mechanic
         );
     }
+
 }

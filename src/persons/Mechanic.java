@@ -3,6 +3,7 @@ package persons;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Map;
 import java.util.Objects;
 
 import static helpers.ConsoleColors.*;
@@ -30,22 +31,39 @@ public final class Mechanic extends Person {
         this.role = "Механик";
     }
 
-    public static void showMechanics(Mechanic[] mechanics) {
-        for (Mechanic mechanic : mechanics) {
+    public static void showMechanics(Map<Integer, Mechanic> mechanics) {
+        for (Map.Entry<Integer, Mechanic> mechanic: mechanics.entrySet()) {
             LOGGER.info(
                     ANSI_GREEN + "Имя и фамилия: " + ANSI_YELLOW
-                            + mechanic.getName() + " " + mechanic.getSurname() + ANSI_RESET
+                            + mechanic.getValue().getName() + " " + mechanic.getValue().getSurname() + ANSI_RESET
             );
             LOGGER.info(
                     ANSI_GREEN + "Экспертиза: " + ANSI_YELLOW
-                            + mechanic.getExpertise() + ANSI_RESET
+                            + mechanic.getValue().getExpertise() + ANSI_RESET
             );
             LOGGER.info(
                     ANSI_GREEN + "Доступность: " + ANSI_YELLOW
-                            + mechanic.getAvailability() + "\n" + ANSI_RESET
+                            + mechanic.getValue().getAvailability() + "\n" + ANSI_RESET
             );
         }
     }
+
+//    public static void showMechanics(Map<Integer, Mechanic> mechanics) {
+//        for (Mechanic mechanic : mechanics) {
+//            LOGGER.info(
+//                    ANSI_GREEN + "Имя и фамилия: " + ANSI_YELLOW
+//                            + mechanic.getName() + " " + mechanic.getSurname() + ANSI_RESET
+//            );
+//            LOGGER.info(
+//                    ANSI_GREEN + "Экспертиза: " + ANSI_YELLOW
+//                            + mechanic.getExpertise() + ANSI_RESET
+//            );
+//            LOGGER.info(
+//                    ANSI_GREEN + "Доступность: " + ANSI_YELLOW
+//                            + mechanic.getAvailability() + "\n" + ANSI_RESET
+//            );
+//        }
+//    }
 
     @Override
     public String showPersonRole() {

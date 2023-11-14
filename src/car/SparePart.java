@@ -1,8 +1,13 @@
 package car;
 
+import customlinkedlist.CustomLinkedList;
+import helpers.ObjectsCreator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.List;
 import java.util.Objects;
 
 import static helpers.ConsoleColors.ANSI_RESET;
@@ -14,7 +19,7 @@ public class SparePart extends Car {
     private String sparePartType;
     private String sparePartMake;
     private String isInStock;
-    private double sparePartCost;
+    private BigDecimal sparePartCost;
     private int deliveryDays;
 
     // Setup Logger log4j2
@@ -24,9 +29,11 @@ public class SparePart extends Car {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
+    private static final ObjectsCreator OBJECTS_CREATOR = new ObjectsCreator();
+
     public SparePart(
             String sparePartType, String sparePartMake,
-            String isInStock, double sparePartCost
+            String isInStock, BigDecimal sparePartCost
     ) {
         this.sparePartType = sparePartType;
         this.sparePartMake = sparePartMake;
@@ -37,7 +44,7 @@ public class SparePart extends Car {
         }
     }
 
-    public static Car[] showSpareParts(Car[] cars, SparePart[] spareParts) {
+    public static List<Car> showSpareParts(List<Car> cars, List<SparePart> spareParts) {
         for (Car car : cars) {
             LOGGER.info(car + "\n");
         }
@@ -51,20 +58,37 @@ public class SparePart extends Car {
     }
 
     // Method calculates spare part costs depends on car manufacture year
-    public static SparePart[] calcSparePartCost(Car[] cars, SparePart[] spareParts) {
-        double result = 0;
+    public static List<SparePart> calcSparePartCost(List<Car> cars, CustomLinkedList<SparePart> spareParts) {
+        BigDecimal result;
         int sparePartsDeliveryDays;
+
+        // Reset spare part costs to initial values
+        final BigDecimal firstSparePartInitialCost = spareParts.get(0).getSparePartCost();
+        spareParts.get(0).setSparePartCost(firstSparePartInitialCost);
+
+        final BigDecimal secondSparePartInitialCost = spareParts.get(0).getSparePartCost();
+        spareParts.get(0).setSparePartCost(secondSparePartInitialCost);
+
+        final BigDecimal thirdSparePartInitialCost = spareParts.get(0).getSparePartCost();
+        spareParts.get(0).setSparePartCost(thirdSparePartInitialCost);
+
+        // Calculate spare part costs
         for (Car car : cars) {
 
             for (SparePart sparePart : spareParts) {
 
                 if (car.getCarManufactureYear() > 2015) {
                     result = sparePart.getSparePartCost();
-                    sparePart.setSparePartCost(result *= 1.5);
+                    sparePart.setSparePartCost(result = result.multiply(
+                            BigDecimal.valueOf(1.5).setScale(2, RoundingMode.UNNECESSARY))
+                    );
 
                     if (sparePart.getDeliveryDays() > 0) {
                         sparePartsDeliveryDays = sparePart.getDeliveryDays() * 2;
-                        sparePart.setSparePartCost(result += sparePartsDeliveryDays);
+                        sparePart.setSparePartCost(result = result.add(
+                                BigDecimal.valueOf(sparePartsDeliveryDays)
+                                        .setScale(2, RoundingMode.UNNECESSARY))
+                        );
                     }
 
                 }
@@ -101,11 +125,11 @@ public class SparePart extends Car {
         isInStock = inStock;
     }
 
-    public double getSparePartCost() {
+    public BigDecimal getSparePartCost() {
         return sparePartCost;
     }
 
-    public void setSparePartCost(double sparePartCost) {
+    public void setSparePartCost(BigDecimal sparePartCost) {
         this.sparePartCost = sparePartCost;
     }
 
@@ -123,11 +147,11 @@ public class SparePart extends Car {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         SparePart sparePart = (SparePart) o;
-        return Double.compare(sparePart.sparePartCost, sparePartCost) == 0
-                && deliveryDays == sparePart.deliveryDays
+        return deliveryDays == sparePart.deliveryDays
                 && Objects.equals(sparePartType, sparePart.sparePartType)
                 && Objects.equals(sparePartMake, sparePart.sparePartMake)
-                && Objects.equals(isInStock, sparePart.isInStock);
+                && Objects.equals(isInStock, sparePart.isInStock)
+                && Objects.equals(sparePartCost, sparePart.sparePartCost);
     }
 
     @Override

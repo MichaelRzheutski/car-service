@@ -2,18 +2,19 @@ package carservice;
 
 import persons.Mechanic;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 // ServiceRecord: Represents provided service, date and cost
 public final class ServiceType extends CarService {
     private String serviceType;
     private String serviceDate;
-    private double serviceCost;
+    private BigDecimal serviceCost;
     private Mechanic mechanic;
 
     public ServiceType(
             String serviceType, String serviceDate,
-            double serviceCost, Mechanic mechanic
+            BigDecimal serviceCost, Mechanic mechanic
     ) {
         this.serviceType = serviceType;
         this.serviceDate = serviceDate;
@@ -37,11 +38,11 @@ public final class ServiceType extends CarService {
         this.serviceDate = serviceDate;
     }
 
-    public double getServiceCost() {
+    public BigDecimal getServiceCost() {
         return serviceCost;
     }
 
-    public void setServiceCost(double serviceCost) {
+    public void setServiceCost(BigDecimal serviceCost) {
         this.serviceCost = serviceCost;
     }
 
@@ -58,11 +59,10 @@ public final class ServiceType extends CarService {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ServiceType that = (ServiceType) o;
-        return Double.compare(that.serviceCost, serviceCost) == 0
-                && Objects.equals(serviceType, that.serviceType)
+        return Objects.equals(serviceType, that.serviceType)
                 && Objects.equals(serviceDate, that.serviceDate)
-                && Objects.equals(mechanic, that.mechanic
-        );
+                && Objects.equals(serviceCost, that.serviceCost)
+                && Objects.equals(mechanic, that.mechanic);
     }
 
     @Override

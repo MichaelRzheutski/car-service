@@ -7,8 +7,12 @@ import carservice.Appointment;
 import carservice.Invoice;
 import carservice.ServiceType;
 import carservice.SparePartsShop;
+import customlinkedlist.CustomLinkedList;
 import persons.Customer;
 import persons.Mechanic;
+
+import java.math.BigDecimal;
+import java.util.*;
 
 public final class ObjectsCreator {
     public static final String IS_IN_STOCK = "да";
@@ -25,9 +29,9 @@ public final class ObjectsCreator {
     public static final String BRAKE_SET_MAKE = "Шустрые тормоза";
 
     // Spare part costs
-    public static final double ENGINE_OIL_COST = 50.00;
-    public static final double TIRE_SET_COST = 200.00;
-    public static final double BRAKE_SET_COST = 100.00;
+    public static final BigDecimal ENGINE_OIL_COST = new BigDecimal("50.00");
+    public static final BigDecimal TIRE_SET_COST = new BigDecimal("200.00");
+    public static final BigDecimal BRAKE_SET_COST = new BigDecimal("100.00");
 
     // Cars
     public static final String BMW_X6 = "BMW X6";
@@ -51,11 +55,11 @@ public final class ObjectsCreator {
 
     // Car date and cost of service
     public static final String OIL_CHANGE_SERVICE_DATE = "5 Сентября 2023";
-    public static final double OIL_CHANGE_SERVICE_COST = 50.00;
+    public static final BigDecimal OIL_CHANGE_SERVICE_COST = new BigDecimal("50.00");
     public static final String TYRE_ROTATION_SERVICE_DATE = "20 Сентября 2023";
-    public static final double TYRE_ROTATION_SERVICE_COST = 100.00;
+    public static final BigDecimal TYRE_ROTATION_SERVICE_COST = new BigDecimal("100.00");
     public static final String BRACKES_CHANGE_SERVICE_DATE = "5 Октября 2023";
-    public static final double BRACKES_CHANGE_SERVICE_COST = 25.00;
+    public static final BigDecimal BRACKES_CHANGE_SERVICE_COST = new BigDecimal("25.00");
 
     // Mechanics of autoservice
     public static final String MECHANIC_VLADLEN_PODDUBITSKY_NAME = "Владлен";
@@ -79,13 +83,13 @@ public final class ObjectsCreator {
     public static final String VLADIMIR_DOLGIN_APPOINTMENT_DATE = "25 Сентября 2023";
 
     // Costs and payment statuses of invoices
-    public static final double ALEXEY_PRIVOLNOV_INVOICE_COST = 150.00;
+    public static final BigDecimal ALEXEY_PRIVOLNOV_INVOICE_COST = new BigDecimal("150.00");
     public static final String ALEXEY_PRIVOLNOV_INVOICE_PAYMENT_STATUS = "оплачен";
 
-    public static final double SERGEY_VLASOV_INVOICE_COST = 100.00;
+    public static final BigDecimal SERGEY_VLASOV_INVOICE_COST = new BigDecimal("100.00");
     public static final String SERGEY_VLASOV_INVOICE_PAYMENT_STATUS = "оплачен";
 
-    public static final double VLADIMIR_DOLGIN_INVOICE_COST = 50.00;
+    public static final BigDecimal VLADIMIR_DOLGIN_INVOICE_COST = new BigDecimal("50.00");
     public static final String VLADIMIR_DOLGIN_INVOICE_PAYMENT_STATUS = "оплачен";
 
     // Car diagnostics result, damage severity, number of days for service
@@ -114,6 +118,8 @@ public final class ObjectsCreator {
     public static final String VLADIMIR_DOLGIN_SURNAME = "Долгин";
     public static final String VLADIMIR_DOLGIN_PHONE = "+735337847623";
 
+    List<String> dsfdsf = new LinkedList<>();
+
     public ObjectsCreator() {
     }
 
@@ -136,7 +142,16 @@ public final class ObjectsCreator {
             IS_IN_STOCK,
             BRAKE_SET_COST
     );
-    public SparePart[] spareParts = {oilSpare, tiresSpare, brakesSpare};
+    public CustomLinkedList<SparePart> spareParts = new CustomLinkedList<>();
+
+    // Method creates CustomLinkedList of spare parts
+    public CustomLinkedList<SparePart> createSpareParts() {
+        spareParts.add(oilSpare);
+        spareParts.add(tiresSpare);
+        spareParts.add(brakesSpare);
+
+        return spareParts;
+    }
 
     // Create mechanics
     public Mechanic vladlenPoddubitsky = new Mechanic(
@@ -157,7 +172,16 @@ public final class ObjectsCreator {
             MECHANIC_ENGENY_BELY_EXPERTISE,
             MECHANIC_ENGENY_BELY_AVAILABILITY
     );
-    public Mechanic[] mechanics = {vladlenPoddubitsky, vyacheslavMarshal, evgenyBely};
+    public Map<Integer, Mechanic> mechanicMap = new HashMap();
+
+    // Method creates HashMap of mechanics
+    public Map<Integer, Mechanic> createMechanicMap() {
+        mechanicMap.put(0, vladlenPoddubitsky);
+        mechanicMap.put(1, vyacheslavMarshal);
+        mechanicMap.put(2, evgenyBely);
+
+        return mechanicMap;
+    }
 
     // Create cars
     public Car bmwX6 = new Car(
@@ -178,7 +202,16 @@ public final class ObjectsCreator {
             MERCEDES_BENZ_MILEAGE,
             new SparePart[]{oilSpare}
     );
-    public Car[] cars = {bmwX6, toyotaLandCruiser, mercedesBenz};
+    public List<Car> carList = new ArrayList<>();
+
+    // Method creates ArrayList of cars
+    public List<Car> createCarList() {
+        carList.add(bmwX6);
+        carList.add(toyotaLandCruiser);
+        carList.add(mercedesBenz);
+
+        return carList;
+    }
 
     // Create service records for customers
     public ServiceType alexeyPrivolnovService = new ServiceType(
@@ -199,12 +232,6 @@ public final class ObjectsCreator {
             BRACKES_CHANGE_SERVICE_COST,
             evgenyBely
     );
-
-    // Supply spare parts to the shop
-    public SparePartsShop oil = new SparePartsShop(oilSpare);
-    public SparePartsShop tires = new SparePartsShop(tiresSpare);
-    public SparePartsShop brakes = new SparePartsShop(brakesSpare);
-    public SparePartsShop[] sparePartsInShop = {oil, tires, brakes};
 
     // Create appointments
     public Appointment alexeyPrivolnovAppointment = new Appointment(
@@ -230,6 +257,16 @@ public final class ObjectsCreator {
             VLADIMIR_DOLGIN_INVOICE_COST,
             VLADIMIR_DOLGIN_INVOICE_PAYMENT_STATUS
     );
+    public List<Invoice> invoiceList = new LinkedList<>();
+
+    // Method creates LinkedList of Invoices
+    public List<Invoice> createInvoiceList() {
+        invoiceList.add(alexeyPrivolnovInvoice);
+        invoiceList.add(sergeyVlasovInvoice);
+        invoiceList.add(vladimirDolginInvoice);
+
+        return invoiceList;
+    }
 
     // Car diagnostics
     public CarDiagnostics bmwX6Diagnostics = new CarDiagnostics(
@@ -250,7 +287,16 @@ public final class ObjectsCreator {
             MERCEDES_BENZ_DAMAGES_SEVERITY,
             MERCEDES_BENZ_DIAGNOSTICS_TIME
     );
-    public CarDiagnostics[] carDiagnostics = {bmwX6Diagnostics, toyotaLandCruiserDiagnostics, mercedesBenzDiagnostics};
+    public Set<CarDiagnostics> carDiagnosticsSet = new HashSet<>();
+
+    // Method creates HashSet of car diagnostics
+    public Set<CarDiagnostics> createCarDiagnosticsSet() {
+        carList.add(bmwX6);
+        carList.add(toyotaLandCruiser);
+        carList.add(mercedesBenz);
+
+        return carDiagnosticsSet;
+    }
 
     // Create customers
     public Customer alexeyPrivolnov = new Customer(
@@ -288,5 +334,14 @@ public final class ObjectsCreator {
             vladimirDolginInvoice,
             evgenyBely
     );
-    public Customer[] customers = {alexeyPrivolnov, sergeyVlasov, vladimirDolgin};
+    public Set<Customer> customersTreeSet = new LinkedHashSet<>();
+
+    // Method creates LinkedHashSet of customers
+    public Set<Customer> createCustomersTreeSet() {
+        customersTreeSet.add(alexeyPrivolnov);
+        customersTreeSet.add(sergeyVlasov);
+        customersTreeSet.add(vladimirDolgin);
+
+        return customersTreeSet;
+    }
 }

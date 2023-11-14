@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import persons.Mechanic;
 
+import java.util.Map;
 import java.util.Scanner;
 
 import static helpers.ConsoleColors.*;
@@ -21,7 +22,7 @@ public final class RepTimeCalc {
     private static final Logger LOGGER = LogManager.getLogger();
 
     // Calculate car repairment time
-    public static int calculateRepTime(Scanner scanner, boolean exit) {
+    public static int calculateRepTime(Scanner scanner, boolean isExit) {
         LOGGER.info(ANSI_GREEN + "Выберите автомобиль" + ANSI_RESET);
         LOGGER.info("[1]. BMW X6");
         LOGGER.info("[2]. Toyota Land Cruiser");
@@ -31,19 +32,19 @@ public final class RepTimeCalc {
         int option = scanner.nextInt();
         scanner.nextLine();
 
-        int bmwX6DiagnosticsTime = 0;
-        int toyotaLandCruiserDiagnosticsTime = 0;
-        int mercedesBenzDiagnosticsTime = 0;
+        int bmwX6DiagnosticsTime;
+        int toyotaLandCruiserDiagnosticsTime;
+        int mercedesBenzDiagnosticsTime;
         int result = 0;
 
-        while (!exit) {
+        while (!isExit) {
             switch (option) {
-                case 0 -> exit = true;
+                case 0 -> isExit = true;
                 case 1 -> {
                     bmwX6DiagnosticsTime = repTimeCalculator(
                             OBJECTS_CREATOR.bmwX6Diagnostics.getDiagnosticsTime(),
                             OBJECTS_CREATOR.bmwX6.getSpareParts(),
-                            OBJECTS_CREATOR.mechanics
+                            OBJECTS_CREATOR.mechanicMap
                     );
                     LOGGER.info(ANSI_GREEN + "Общее время ремонта " +
                             OBJECTS_CREATOR.bmwX6Diagnostics.getCarForDiagnostics().getCarMake()
@@ -55,11 +56,12 @@ public final class RepTimeCalc {
                     toyotaLandCruiserDiagnosticsTime = repTimeCalculator(
                             OBJECTS_CREATOR.toyotaLandCruiserDiagnostics.getDiagnosticsTime(),
                             OBJECTS_CREATOR.toyotaLandCruiser.getSpareParts(),
-                            OBJECTS_CREATOR.mechanics
+                            OBJECTS_CREATOR.mechanicMap
                     );
                     LOGGER.info(ANSI_GREEN + "Общее время ремонта " +
-                            OBJECTS_CREATOR.toyotaLandCruiserDiagnostics.getCarForDiagnostics().getCarMake()
-                            + " в днях: " + ANSI_YELLOW + toyotaLandCruiserDiagnosticsTime + "\n" + ANSI_RESET
+                            OBJECTS_CREATOR.toyotaLandCruiserDiagnostics.getCarForDiagnostics()
+                                    .getCarMake() + " в днях: " + ANSI_YELLOW
+                            + toyotaLandCruiserDiagnosticsTime + "\n" + ANSI_RESET
                     );
                     result = toyotaLandCruiserDiagnosticsTime;
                 }
@@ -67,11 +69,12 @@ public final class RepTimeCalc {
                     mercedesBenzDiagnosticsTime = repTimeCalculator(
                             OBJECTS_CREATOR.mercedesBenzDiagnostics.getDiagnosticsTime(),
                             OBJECTS_CREATOR.mercedesBenz.getSpareParts(),
-                            OBJECTS_CREATOR.mechanics
+                            OBJECTS_CREATOR.mechanicMap
                     );
                     LOGGER.info(ANSI_GREEN + "Общее время ремонта " +
-                            OBJECTS_CREATOR.mercedesBenzDiagnostics.getCarForDiagnostics().getCarMake()
-                            + " в днях: " + ANSI_YELLOW + mercedesBenzDiagnosticsTime + "\n" + ANSI_RESET
+                            OBJECTS_CREATOR.mercedesBenzDiagnostics.getCarForDiagnostics()
+                                    .getCarMake() + " в днях: " + ANSI_YELLOW
+                            + mercedesBenzDiagnosticsTime + "\n" + ANSI_RESET
                     );
                     result = mercedesBenzDiagnosticsTime;
                 }
@@ -89,7 +92,7 @@ public final class RepTimeCalc {
     // damages severity and term of spare parts delivery
     public static int repTimeCalculator(
             int diagnosticsTime, SparePart[] spareParts,
-            Mechanic[] mechanics
+            Map<Integer, Mechanic> mechanics
     ) {
         RepCostCalc.checkDiagnosticsResult(
                 OBJECTS_CREATOR.bmwX6Diagnostics.getDiagnosticsResult(),
@@ -115,8 +118,10 @@ public final class RepTimeCalc {
         }
 
         String mechanicExpertise;
-        for (Mechanic mechanic : mechanics) {
-            mechanicExpertise = mechanic.getExpertise();
+
+        for (Map.Entry<Integer, Mechanic> mechanic: mechanics.entrySet()) {
+
+            mechanicExpertise = mechanic.getValue().getExpertise();
 
             if (mechanicExpertise.equals("мастер")) {
                 totalRepairmentTime += 1;
@@ -130,7 +135,25 @@ public final class RepTimeCalc {
                 totalRepairmentTime += 3;
                 break;
             }
+
         }
+
+//        for (Mechanic mechanic : mechanics) {
+//            mechanicExpertise = mechanic.getExpertise();
+//
+//            if (mechanicExpertise.equals("мастер")) {
+//                totalRepairmentTime += 1;
+//                break;
+//            }
+//            if (mechanicExpertise.equals("специалист")) {
+//                totalRepairmentTime += 2;
+//                break;
+//            }
+//            if (mechanicExpertise.equals("стажёр")) {
+//                totalRepairmentTime += 3;
+//                break;
+//            }
+//        }
 
         return totalRepairmentTime;
     }

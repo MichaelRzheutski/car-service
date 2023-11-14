@@ -1,13 +1,18 @@
 package helpers.calcs;
 
+import carservice.Invoice;
 import helpers.ObjectsCreator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.List;
 import java.util.Scanner;
 
 import static helpers.ConsoleColors.*;
 
+// TODO: ПОЛНОСТЬЮ ПЕРЕПИСАТЬ КАЛЬКУЛЯТОР
 public final class RepCostCalc {
     private static final ObjectsCreator OBJECTS_CREATOR = new ObjectsCreator();
 
@@ -18,9 +23,10 @@ public final class RepCostCalc {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
+
     // Calculate car repairment cost
-    public static double calcRepCost(
-            Scanner scanner, boolean exit
+    public static BigDecimal calcRepCost(
+            Scanner scanner, boolean isExit, List<Invoice> invoiceList
     ) {
         LOGGER.info(ANSI_GREEN + "Выберите автомобиль" + ANSI_RESET);
         LOGGER.info("[1]. BMW X6");
@@ -31,24 +37,38 @@ public final class RepCostCalc {
         int option = scanner.nextInt();
         scanner.nextLine();
 
-        double alexeyPrivolnovInvoice = 0;
-        double sergeyVlasovInvoice = 0;
-        double vladimirDolginInvoice = 0;
-        double result = 0;
+        // TODO: ДОДЕЛАТЬ РЕСЕТ К НАЧАЛЬНЫМ ЗНАЧЕНИЯМ
+        // Reset spare invoice costs to initial values
+        final BigDecimal alexeyPrivolnovInitialInvoice = invoiceList.get(0).getTotalCost();
+        invoiceList.get(0).setTotalCost(alexeyPrivolnovInitialInvoice);
 
-        while (!exit) {
+        final BigDecimal sergeyVlasovInitialInvoice = invoiceList.get(1).getTotalCost();
+        invoiceList.get(1).setTotalCost(sergeyVlasovInitialInvoice);
+
+        final BigDecimal vladimirDolginInitialInvoice = invoiceList.get(2).getTotalCost();
+        invoiceList.get(2).setTotalCost(vladimirDolginInitialInvoice);
+
+        BigDecimal alexeyPrivolnovInvoice;
+        BigDecimal sergeyVlasovInvoice;
+        BigDecimal vladimirDolginInvoice;
+        BigDecimal result = null;
+
+        while (!isExit) {
             switch (option) {
-                case 0 -> exit = true;
+                case 0 -> isExit = true;
                 case 1 -> {
                     alexeyPrivolnovInvoice = repCostCalculator(
-                            OBJECTS_CREATOR.bmwX6Diagnostics.getCarForDiagnostics().getCarManufactureYear(),
+                            OBJECTS_CREATOR.bmwX6Diagnostics.getCarForDiagnostics()
+                                    .getCarManufactureYear(),
                             OBJECTS_CREATOR.bmwX6Diagnostics.getDiagnosticsResult(),
                             OBJECTS_CREATOR.bmwX6Diagnostics.getDamagesSeverity(),
                             OBJECTS_CREATOR.bmwX6Diagnostics.getDiagnosticsTime()
                     );
+
                     LOGGER.info(ANSI_GREEN + "Общая стоимость ремонта " +
-                            OBJECTS_CREATOR.bmwX6Diagnostics.getCarForDiagnostics().getCarMake() + ": " + ANSI_YELLOW +
-                            alexeyPrivolnovInvoice + "\n" + ANSI_RESET
+                            OBJECTS_CREATOR.bmwX6Diagnostics.getCarForDiagnostics()
+                                    .getCarMake() + ": " + ANSI_YELLOW +
+                            alexeyPrivolnovInvoice + "$\n" + ANSI_RESET
                     );
                     result = alexeyPrivolnovInvoice;
                 }
@@ -60,8 +80,9 @@ public final class RepCostCalc {
                             OBJECTS_CREATOR.toyotaLandCruiserDiagnostics.getDiagnosticsTime()
                     );
                     LOGGER.info(ANSI_GREEN + "Общая стоимость ремонта " +
-                            OBJECTS_CREATOR.toyotaLandCruiserDiagnostics.getCarForDiagnostics().getCarMake() + ": " + ANSI_YELLOW +
-                            sergeyVlasovInvoice + "\n" + ANSI_RESET
+                            OBJECTS_CREATOR.toyotaLandCruiserDiagnostics.getCarForDiagnostics()
+                                    .getCarMake() + ": " + ANSI_YELLOW +
+                            sergeyVlasovInvoice + "$\n" + ANSI_RESET
                     );
                     result = sergeyVlasovInvoice;
                 }
@@ -73,8 +94,9 @@ public final class RepCostCalc {
                             OBJECTS_CREATOR.mercedesBenzDiagnostics.getDiagnosticsTime()
                     );
                     LOGGER.info(ANSI_GREEN + "Общая стоимость ремонта " +
-                            OBJECTS_CREATOR.mercedesBenzDiagnostics.getCarForDiagnostics().getCarMake() + ": " + ANSI_YELLOW +
-                            vladimirDolginInvoice + "\n" + ANSI_RESET
+                            OBJECTS_CREATOR.mercedesBenzDiagnostics.getCarForDiagnostics()
+                                    .getCarMake() + ": " + ANSI_YELLOW +
+                            vladimirDolginInvoice + "$\n" + ANSI_RESET
                     );
                     result = vladimirDolginInvoice;
                 }
@@ -90,116 +112,131 @@ public final class RepCostCalc {
 
     // Method checks car manufacture year and
     // returns repairment cost depends on year
-    public static double checkCarManufactureYear(
-            int carManufactureYear, double repairmentCost,
+    public static BigDecimal checkCarManufactureYear(
+            int carManufactureYear, BigDecimal repairmentCost,
             String name, String surname
     ) {
-        double totalRepairmentCost = repairmentCost;
         String nameAndSurname = name + " " + surname;
 
         if (carManufactureYear >= 2021 && carManufactureYear < 2025) {
-            totalRepairmentCost *= 1.5;
+            repairmentCost = repairmentCost.multiply(
+                    BigDecimal.valueOf(1.5).setScale(2, RoundingMode.UNNECESSARY)
+            );
         }
 
         switch (nameAndSurname) {
-            case "Алексей Привольнов" -> OBJECTS_CREATOR.alexeyPrivolnovInvoice.setTotalCost(totalRepairmentCost);
-            case "Сергей Власов" -> OBJECTS_CREATOR.sergeyVlasovInvoice.setTotalCost(totalRepairmentCost);
-            case "Владимир Долгин" -> OBJECTS_CREATOR.vladimirDolginInvoice.setTotalCost(totalRepairmentCost);
+            case "Алексей Привольнов" -> OBJECTS_CREATOR.alexeyPrivolnovInvoice
+                    .setTotalCost(repairmentCost);
+            case "Сергей Власов" -> OBJECTS_CREATOR.sergeyVlasovInvoice
+                    .setTotalCost(repairmentCost);
+            case "Владимир Долгин" -> OBJECTS_CREATOR.vladimirDolginInvoice
+                    .setTotalCost(repairmentCost);
             default -> LOGGER.info("Такого клиента не существует");
         }
 
-        return totalRepairmentCost;
+        return repairmentCost;
     }
 
     // Method checks diagnostics result and adds additional price to repairment cost
     // depends on diagnostics result
-    public static double checkDiagnosticsResult(
-            String diagnosticsResult, double repairmentCost,
+    public static BigDecimal checkDiagnosticsResult(
+            String diagnosticsResult, BigDecimal repairmentCost,
             String name, String surname, int diagnosticsTime
     ) {
-        double totalRepairmentCost = repairmentCost;
         int totalDiagnosticsTime = diagnosticsTime;
         String nameAndSurname = name + " " + surname;
 
         if (diagnosticsResult.equals("Требуется замена моторного масла")) {
-            totalRepairmentCost += 20.00;
+            repairmentCost = repairmentCost.add(
+                    BigDecimal.valueOf(20.00).setScale(2, RoundingMode.UNNECESSARY)
+            );
         }
 
         if (diagnosticsResult.equals("Требуется замена шин")) {
-            totalRepairmentCost += 50.00;
+            repairmentCost = repairmentCost.add(
+                    BigDecimal.valueOf(50.00).setScale(2, RoundingMode.UNNECESSARY)
+            );
             totalDiagnosticsTime += 1;
         }
 
         if (diagnosticsResult.equals("Требуется замена тормозных колодок")) {
-            totalRepairmentCost += 80.00;
+            repairmentCost = repairmentCost.add(
+                    BigDecimal.valueOf(80.00).setScale(2, RoundingMode.UNNECESSARY)
+            );
             totalDiagnosticsTime += 2;
         }
 
         switch (nameAndSurname) {
             case "Алексей Привольнов" -> {
-                OBJECTS_CREATOR.alexeyPrivolnovInvoice.setTotalCost(totalRepairmentCost);
+                OBJECTS_CREATOR.alexeyPrivolnovInvoice.setTotalCost(repairmentCost);
                 OBJECTS_CREATOR.bmwX6Diagnostics.setDiagnosticsTime(totalDiagnosticsTime);
             }
             case "Сергей Власов" -> {
-                OBJECTS_CREATOR.sergeyVlasovInvoice.setTotalCost(totalRepairmentCost);
+                OBJECTS_CREATOR.sergeyVlasovInvoice.setTotalCost(repairmentCost);
                 OBJECTS_CREATOR.toyotaLandCruiserDiagnostics.setDiagnosticsTime(totalDiagnosticsTime);
             }
             case "Владимир Долгин" -> {
-                OBJECTS_CREATOR.vladimirDolginInvoice.setTotalCost(totalRepairmentCost);
+                OBJECTS_CREATOR.vladimirDolginInvoice.setTotalCost(repairmentCost);
                 OBJECTS_CREATOR.mercedesBenzDiagnostics.setDiagnosticsTime(totalDiagnosticsTime);
             }
-            default -> LOGGER.info(String.format("%sТакого клиента не существует!%s\n", ANSI_RED, ANSI_RESET)
+            default -> LOGGER.info(
+                    String.format("%sТакого клиента не существует!%s\n", ANSI_RED, ANSI_RESET)
             );
+
         }
 
-        return totalRepairmentCost;
+        return repairmentCost;
     }
 
     // Method checks car damages severity
-    public static double checkDamagesSeverity(
-            String damagesSeverity, double repairmentCost,
+    public static BigDecimal checkDamagesSeverity(
+            String damagesSeverity, BigDecimal repairmentCost,
             String name, String surname, int diagnosticsTime
     ) {
-        double totalRepairmentCost = repairmentCost;
         int totalDiagnosticsTime = diagnosticsTime;
         String nameAndSurname = name + " " + surname;
 
         if (damagesSeverity.equals("Лёгкие повреждения")) {
-            totalRepairmentCost += 30.00;
+            repairmentCost = repairmentCost.add(
+                    BigDecimal.valueOf(30.00).setScale(2, RoundingMode.UNNECESSARY)
+            );
             totalDiagnosticsTime += 1;
         }
 
         if (damagesSeverity.equals("Серьёзные повреждения")) {
-            totalRepairmentCost += 50.00;
+            repairmentCost = repairmentCost.add(
+                    BigDecimal.valueOf(50.00).setScale(2, RoundingMode.UNNECESSARY)
+            );
             totalDiagnosticsTime += 2;
         }
 
         switch (nameAndSurname) {
             case "Алексей Привольнов" -> {
-                OBJECTS_CREATOR.alexeyPrivolnovInvoice.setTotalCost(totalRepairmentCost);
+                OBJECTS_CREATOR.alexeyPrivolnovInvoice.setTotalCost(repairmentCost);
                 OBJECTS_CREATOR.bmwX6Diagnostics.setDiagnosticsTime(totalDiagnosticsTime);
             }
             case "Сергей Власов" -> {
-                OBJECTS_CREATOR.sergeyVlasovInvoice.setTotalCost(totalRepairmentCost);
+                OBJECTS_CREATOR.sergeyVlasovInvoice.setTotalCost(repairmentCost);
                 OBJECTS_CREATOR.toyotaLandCruiserDiagnostics.setDiagnosticsTime(totalDiagnosticsTime);
             }
             case "Владимир Долгин" -> {
-                OBJECTS_CREATOR.vladimirDolginInvoice.setTotalCost(totalRepairmentCost);
+                OBJECTS_CREATOR.vladimirDolginInvoice.setTotalCost(repairmentCost);
                 OBJECTS_CREATOR.mercedesBenzDiagnostics.setDiagnosticsTime(totalDiagnosticsTime);
             }
-            default -> LOGGER.info(String.format("%sТакого клиента не существует!%s\n", ANSI_RED, ANSI_RESET)
+            default -> LOGGER.info(
+                    String.format("%sТакого клиента не существует!%s\n", ANSI_RED, ANSI_RESET)
             );
         }
 
-        return totalRepairmentCost;
+        return repairmentCost;
     }
 
     // Method calculates total cost of repairment
-    public static double repCostCalculator(
+    public static BigDecimal repCostCalculator(
             int carManufactureYear, String diagnosticsResult,
             String damagesSeverity, int diagnosticsTime
     ) {
-        double totalRepairmentCost;
+        BigDecimal totalRepairmentCost;
 
         totalRepairmentCost = checkCarManufactureYear(
                 OBJECTS_CREATOR.bmwX6.getCarManufactureYear(),
@@ -224,6 +261,9 @@ public final class RepCostCalc {
                 OBJECTS_CREATOR.bmwX6Diagnostics.getDiagnosticsTime()
         );
 
+        totalRepairmentCost = totalRepairmentCost.setScale(2, RoundingMode.UNNECESSARY);
+
         return totalRepairmentCost;
     }
+
 }

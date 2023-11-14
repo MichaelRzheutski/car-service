@@ -23,12 +23,15 @@ public final class CarDiagMenu {
     private static final Logger LOGGER = LogManager.getLogger();
 
     // Car diagnostics menu
-    public void diagServiceMenu(Scanner scanner, boolean exit) throws NotNumberException {
+    public void diagServiceMenu(Scanner scanner, boolean isExit) throws NotNumberException {
         int option;
 
         try {
-            while (!exit) {
-                LOGGER.info(String.format("%sВыберите авто для диагностики:%s", ANSI_GREEN, ANSI_RESET));
+            while (!isExit) {
+                LOGGER.info(
+                        String.format("%sВыберите авто для диагностики:%s",
+                                ANSI_GREEN, ANSI_RESET)
+                );
                 LOGGER.info("[1]. Диагностика BMW X6");
                 LOGGER.info("[2]. Диагностика Toyota LandCruiser");
                 LOGGER.info("[3]. Диагностика Mercedes Benz");
@@ -43,13 +46,14 @@ public final class CarDiagMenu {
                     }
                 }
 
-                // Check value in accepted range
+                // Check value in accepted range, if out of range
+                // throw the OutOfMenuBoundsException
                 if (option > 3) {
                     option = 4;
                 }
 
                 switch (option) {
-                    case 0 -> exit = true;
+                    case 0 -> isExit = true;
                     case 1 -> checkCar(OBJECTS_CREATOR.bmwX6Diagnostics);
                     case 2 -> checkCar(OBJECTS_CREATOR.toyotaLandCruiserDiagnostics);
                     case 3 -> checkCar(OBJECTS_CREATOR.mercedesBenzDiagnostics);

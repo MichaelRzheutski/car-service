@@ -1,5 +1,5 @@
 package interfaces;
 
 public interface Electronicable {
-    String isElectronicsRepaired(boolean electronicsRepairment);
+    String isCarElectronicsRepaired(boolean isCarElectronicsRepaired);
 }

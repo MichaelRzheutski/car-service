@@ -39,10 +39,10 @@ public final class AppMainMenu {
     public void mainMenu() throws NotNumberException {
         try (Scanner scanner = new Scanner(System.in)) {
             // Main menu
-            boolean exit = false;
+            boolean isExit = false;
             int option;
 
-            while (!exit) {
+            while (!isExit) {
                 LOGGER.info(
                         String.format("%sПожалуйста, выберите одну из предложенных операций: %s",
                                 ANSI_GREEN, ANSI_RESET)
@@ -63,20 +63,21 @@ public final class AppMainMenu {
                     }
                 }
 
-                // Check value in accepted range
+                // Check value in accepted range, if out of range
+                // throw the OutOfMenuBoundsException
                 if (option > 5) {
                     option = 6;
                 }
 
                 switch (option) {
-                    case 0 -> exit = true;
-                    case 1 -> AUTO_SERV_MENU.autoServMenu(scanner, exit);
-                    case 2 -> showCustomers(OBJECTS_CREATOR.customers);
-                    case 3 -> car.showCars(OBJECTS_CREATOR.cars,
-                            SparePart.calcSparePartCost(OBJECTS_CREATOR.cars, OBJECTS_CREATOR.spareParts));
-                    case 4 -> SparePart.showSpareParts(OBJECTS_CREATOR.cars,
-                            calcSparePartCost(OBJECTS_CREATOR.cars, OBJECTS_CREATOR.spareParts));
-                    case 5 -> showMechanics(OBJECTS_CREATOR.mechanics);
+                    case 0 -> isExit = true;
+                    case 1 -> AUTO_SERV_MENU.autoServMenu(scanner, isExit);
+                    case 2 -> showCustomers(OBJECTS_CREATOR.createCustomersTreeSet());
+                    case 3 -> car.showCars(OBJECTS_CREATOR.createCarList(),
+                            SparePart.calcSparePartCost(OBJECTS_CREATOR.createCarList(), OBJECTS_CREATOR.createSpareParts()));
+                    case 4 -> SparePart.showSpareParts(OBJECTS_CREATOR.createCarList(),
+                            calcSparePartCost(OBJECTS_CREATOR.createCarList(), OBJECTS_CREATOR.createSpareParts()));
+                    case 5 -> showMechanics(OBJECTS_CREATOR.createMechanicMap());
                     case 6 -> throw new OutOfMenuBoundsException(
                             "Введён пункт меню " + option + " свыше доступных", option - 1);
                     case -1 -> throw new NegativeValueException("Введено негативное число", option);
